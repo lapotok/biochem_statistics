@@ -4,6 +4,11 @@
 
 Альтшулер Евгений
 
+<script src="//yihui.name/js/math-code.js"></script>
+<!-- Just one possible MathJax CDN below. You may use others. -->
+<script async
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 > _Биофак МГУ, каф. биохимии_
 >
@@ -51,14 +56,10 @@ my_list$matrix[1:3,1:4]
 
 Надо проверить нормальность распределения каждой из переменных (их 4) для каждого вида ирисов (их 3).
 
-Если не автоматизировать, то надо написать <a href="https://www.codecogs.com/eqnedit.php?latex=$4\cdot3=12$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$4\cdot3=12$" title="$4\cdot3=12$" /></a> команд следующего вида (заменяя название вида и переменной)
+Если не автоматизировать, то надо написать 3x4=12 команд следующего вида (заменяя название вида и переменной)
 
 ```r
 shapiro.test(iris[iris$Species == 'versicolor', 'Petal.Length'])$p.value
-```
-
-```
-[1] 0.1584778
 ```
 
 Основа автоматизации - циклы. Цикл `for` -  это когда для каждого элемента из набора производится какое-то действие. 
@@ -83,7 +84,7 @@ for (i in numbers){
 }
 ```
 
-Распечатаем `shapiro.test` для всех переменных одного вида.
+Распечатаем `shapiro.test(...)$p.value` для всех переменных одного вида.
 
 ```r
 # переменные
@@ -99,6 +100,14 @@ for (current_var in my_vars){
 }
 ```
 
+Чтобы два раза не печатать `print()`, а скомбинировать два значения (имя переменной и значение p-value), можно использовать функцию `paste()`.
+
+```{r eval=T)
+my_var_name = "MyVariableName"
+my_pvalue = 0.05
+print(paste(my_ 
+```
+
 Аналогично распечатаем `shapiro.test` для одной переменной всех видов
 
 ```r
@@ -112,12 +121,12 @@ for (current_sp in unique_species){
 }
 ```
 
-> Теперь используя вложенные циклы `for` (см. ниже) посчитайте `shapiro.test` для всех видов и всех признаков
+Теперь используя вложенные циклы `for` (см. ниже) посчитаем `shapiro.test` для всех видов и всех признаков
 
 ```r
-for(x in X){
-  for(y in Y){
-    do_something_with(x, y)
+for(current_var in my_vars){
+  for(current_sp in unique_species){
+     print(
   }
 }
 ```
