@@ -51,7 +51,7 @@ my_list$matrix[1:3,1:4]
 
 Надо проверить нормальность распределения каждой из переменных (их 4) для каждого вида ирисов (их 3).
 
-Если не автоматизировать, то надо написать $4\cdot3=12$ команд следующего вида (заменяя название вида и переменной)
+Если не автоматизировать, то надо написать <a href="https://www.codecogs.com/eqnedit.php?latex=$4\cdot3=12$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$4\cdot3=12$" title="$4\cdot3=12$" /></a> команд следующего вида (заменяя название вида и переменной)
 
 ```r
 shapiro.test(iris[iris$Species == 'versicolor', 'Petal.Length'])$p.value
