@@ -4,12 +4,6 @@
 
 Альтшулер Евгений
 
-<script src="//yihui.name/js/math-code.js"></script>
-<!-- Just one possible MathJax CDN below. You may use others. -->
-<script async
-  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
 > _Биофак МГУ, каф. биохимии_
 >
 > _Для магистров 2 года (Биофак МГУ, каф. биохимии)_
