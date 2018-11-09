@@ -259,7 +259,7 @@ tt_df_long = melt(tt_df, id.vars = c())
 
 Первым делом хотелось бы посмотреть на данные глазами. Посмотрим на 2 типа графика: точечный график и боксплот в разных вариантах.
 
-![](https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2018/lesson2/materials_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2018/lesson2/materials_files/figure-html/unnamed-chunk-13-1.png)
 
 Боксплот - наиболее распространенный тип графика, но точки понятнее. Вот как строить эти графики.
 
