@@ -204,7 +204,7 @@ virginica          TRUE        TRUE         TRUE        TRUE
 
 Итак, вместо множества однообразных команд мы смогли написать программу, которая автоматически может проверить нормальность распределения любого количества признаков у любого количества видов. А потом эти данные можно наглядно визуализовать в виде `heatplot`.
 
-![](materials_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2018/lesson2/materials_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 ## T-test
 
@@ -259,7 +259,7 @@ tt_df_long = melt(tt_df, id.vars = c())
 
 Первым делом хотелось бы посмотреть на данные глазами. Посмотрим на 2 типа графика: точечный график и боксплот в разных вариантах.
 
-![](materials_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2018/lesson2/materials_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 Боксплот - наиболее распространенный тип графика, но точки понятнее. Вот как строить эти графики.
 
@@ -290,7 +290,7 @@ arrows(as.numeric(vars)+0.2, ci_lower, as.numeric(vars)+0.2, ci_upper, code=3, a
 abline(h=50, col="red", lty="dashed", lwd=0.5)
 ```
 
-![](materials_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2018/lesson2/materials_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
 Теперь мы представляем, как выглядит наше тестовое распределение, с которым мы будем работать. Перейдем к t-тесту, чтобы ответить, отличаются ли группы (могли ли они быть взяты из одной генеральной совокупности). Критерий Стьюдента можно применять только проверив нормальность (`shapiro.test()`) и гомогенность дисперсий (`bartlett.test()` или `leveneTest()` из пакета `car`).
 
