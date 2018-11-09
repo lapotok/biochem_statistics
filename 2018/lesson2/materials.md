@@ -216,9 +216,9 @@ virginica          TRUE        TRUE         TRUE        TRUE
 
 ```r
 set.seed(123) # задаем стартовое значения генератору случайных чисел
-A1 = rnorm(30, m=50, 5)
-A2 = rnorm(30, m=50, 5)
-B1 = rnorm(30, m=55, 5)
+A1 = rnorm(30, m=50, sd=5)
+A2 = rnorm(30, m=50, sd=5)
+B1 = rnorm(30, m=55, sd=5)
 
 # можно свести их в таблицу
 tt_df = data.frame(A1 = A1, A2 = A2, B1 = B1)
