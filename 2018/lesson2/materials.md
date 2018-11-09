@@ -272,13 +272,13 @@ sinaplot(value~variable, tt_df_long, main="Sinaplot")
 boxplot(value~variable, tt_df_long, main="Boxplot")
 ```
 
-Но наиболее понятен был бы график, где есть и точки, и боксплот, и среднее со стандартным отклонением, и доверительный интервал. Для этого надо наслоить эти графики друг на друга.
+Но наиболее понятен был бы график, где есть и точки, и боксплот, и среднее со стандартным отклонением, и доверительный интервал. Для этого надо наслоить эти графики друг на друга. Постарайтесь разобраться, что тут написано. Поэксперементировать с новыми функциями, почитать справку, посмотреть примеры. Но на следующих уроках мы больше их коснемся.
 
 
 ```r
 boxplot(value~variable, tt_df_long, main="Boxplot+sinaplot+mean+sd+ci")
 sinaplot(value~variable, tt_df_long, pch=21, col=alpha("black",0.1), bg=alpha("black",0.2), cex=.8, add=T)
-means = aggregate(value~variable,tt_df_long, "mean")$value
+means = aggregate(value~variable,tt_df_long, "mean")$value # aggregate - очень полезная функция!!!
 sds = aggregate(value~variable,tt_df_long, "sd")$value
 ci = aggregate(value~variable,tt_df_long, FUN=function(x) t.test(x)$conf.int)
 ci_lower = ci$value[,1]
@@ -352,3 +352,23 @@ alternative hypothesis: true location shift is not equal to 0
 * одновыборочный
 * односторонний vs двусторонний
 * парный
+
+# Задание
+
+Домашнее задание здесь - https://goo.gl/forms/W1DW1CvpagOpjLOc2
+
+<!-- 
+# Идеи для домашки
+
+* условное индексирование
+* обычный цикл
+* вложенный цикл
+* векторы, матрицы, таблицы
+* генерация случайных чисел
+
+# Следующий урок
+
+* if else
+* anova
+* import
+-->
