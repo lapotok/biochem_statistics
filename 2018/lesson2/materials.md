@@ -334,7 +334,7 @@ mean of x mean of y
 ```
 
 ```r
-# критерий Вилкоксона: любое распределение, любые дисперсии (еще не проходили)
+# критерий Вилкоксона (Манна-Уитни): любое распределение, любые дисперсии (еще не проходили)
 wilcox.test(A1, B1)
 ```
 
@@ -371,4 +371,8 @@ alternative hypothesis: true location shift is not equal to 0
 * if else
 * anova
 * import
+* subset
+* aggregate, apply
+* ggplot
+* lambda-функции
 -->
