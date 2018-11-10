@@ -267,7 +267,7 @@ tt_df_long = melt(tt_df, id.vars = c())
 ```r
 stripchart(value~variable, tt_df_long, v=T, main="Stripchart")
 stripchart(value~variable, tt_df_long, v=T, method="jitter", main="Stripchart+jitter")
-install.packages('sinaplot')
+library(sinaplot)
 sinaplot(value~variable, tt_df_long, main="Sinaplot")
 boxplot(value~variable, tt_df_long, main="Boxplot")
 ```
