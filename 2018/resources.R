@@ -9,3 +9,4 @@ if (length(new.packages) == 0) {
   message(paste(length(new.packages), 'need to be installed.'))
   install.packages(new.packages)
 }
+test = function() print('passed!')
