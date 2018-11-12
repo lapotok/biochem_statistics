@@ -5,7 +5,7 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-if (!("Biobase" %in% installed.packages()[,"Package"]) BiocManager::install("Biobase", version = "3.8")
+if (!("Biobase" %in% installed.packages()[,"Package"])) BiocManager::install("Biobase", version = "3.8")
 
 if (length(new.packages) == 0) {
   message('No packages need to be installed.')
