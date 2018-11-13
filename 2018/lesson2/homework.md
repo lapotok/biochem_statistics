@@ -10,12 +10,15 @@
 
 Новую колонку можно создать тремя способами:
 
-    1. my_dataframe$new_column_name = c('value1', 'value2'...)
-    2. my_dataframe[['new_column_name']] = c('value1', 'value2'...)
-    3. cbind(my_dataframe, c('value1', 'value2'...))
+1. `my_dataframe$new_column_name = c('value1', 'value2'...)`
+2. `my_dataframe[['new_column_name']] = c('value1', 'value2'...)`
+3. `cbind(my_dataframe, c('value1', 'value2'...))`
 
 ```
-бла-бла
+колонка Petal.Length из iris = логарифмирование(колонка Petal.Length из iris)
+колонка Petal.Width из iris = z-трансформация(колонка Petal.Width из iris)
+результат_суммирования = суммируем все измерения по каждой строке
+колонка Sum из iris = результат_суммирования 
 ```
 
 ## 3. Вложенный цикл *
