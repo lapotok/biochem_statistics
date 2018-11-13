@@ -10,12 +10,12 @@
 
 Новую колонку можно создать тремя способами:
 
-    1. `my_dataframe$new_column_name = c('value1', 'value2'...)`
-    2. `my_dataframe[['new_column_name']] = c('value1', 'value2'...)`
-    3. `cbind(my_dataframe, c('value1', 'value2'...))`
+    1. my_dataframe$new_column_name = c('value1', 'value2'...)
+    2. my_dataframe[['new_column_name']] = c('value1', 'value2'...)
+    3. cbind(my_dataframe, c('value1', 'value2'...))
 
 ```
-
+бла-бла
 ```
 
 ## 3. Вложенный цикл *
