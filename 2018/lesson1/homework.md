@@ -1,6 +1,6 @@
 # Домашнее задание №1
 
-## `R` как калькуляотор
+## `R` как калькулятор
 <!-- \frac{log_{10}{123}+1.34}{(4\cdot5+3)^{1.5}}\cdot\sqrt{\frac{1}{(1+10^{15})}} -->
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\frac{log_{10}{123}&plus;1.34}{(4\cdot5&plus;3)^{1.5}}\cdot\sqrt{\frac{1}{(1&plus;10^{15})}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{log_{10}{123}&plus;1.34}{(4\cdot5&plus;3)^{1.5}}\cdot\sqrt{\frac{1}{(1&plus;10^{15})}}" title="\frac{log_{10}{123}+1.34}{(4\cdot5+3)^{1.5}}\cdot\sqrt{\frac{1}{(1+10^{15})}}" /></a>
 
