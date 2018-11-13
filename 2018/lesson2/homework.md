@@ -14,6 +14,8 @@
 2. `my_dataframe[['new_column_name']] = c('value1', 'value2'...)`
 3. `cbind(my_dataframe, c('value1', 'value2'...))`
 
+Ниже я привожу псевдокод (условные команды)
+
 ```
 колонка Petal.Length из iris = логарифмирование(колонка Petal.Length из iris)
 колонка Petal.Width из iris = z-трансформация(колонка Petal.Width из iris)
