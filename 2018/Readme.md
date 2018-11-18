@@ -18,6 +18,9 @@
 
 ## Полезные источники по R
 
+1|2|3|4
+5|6|safjdskfsdfhskfjhsfh|7
+
 * []()
 
 * [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
@@ -29,7 +32,7 @@
 * []()
 * []()
 * []()
-* []()
+* [Markdown](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) & [R markdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf)
 * [Cheat sheets](https://github.com/rstudio/cheatsheets/)
   - [Base `R`](https://github.com/rstudio/cheatsheets/blob/master/base-r.pdf)
   - [Data import](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf)
