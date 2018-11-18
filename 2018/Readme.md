@@ -18,41 +18,34 @@
 
 ## Полезные источники по R
 
-|1|2|3|4|
-|5|6|safjdskfsdfhskfjhsfh|7|
+* Книги по статистической обработке в `R`
+  - [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
+  - http://mospolytech.ru/storage/b53b3a3d6ab90ce0268229151c9bde11/files/Mastitsky_and_Shitikov_2014.pdf
+  - https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
+  - Pirate `R` [course](https://ndphillips.github.io/IntroductionR_Course/) and [book](https://bookdown.org/ndphillips/YaRrr/)
 
-* []()
+* Полезные сайты
+  - [STHDA](http://www.sthda.com/english/wiki/r-basics-quick-and-easy) - коллекция всевозможных мануалов по анализу и визуализации в `R`
+  - http://personality-project.org/r/
+  - https://rmarkdown.rstudio.com/lesson-1.html
+  - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
 
-* [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
-* [STHDA - коллекция всевозможных мануалов по анализу и визуализации в `R`](http://www.sthda.com/english/wiki/r-basics-quick-and-easy)
-* []()
-* []()
-* []()
-* []()
-* []()
-* []()
-* []()
-* [Markdown](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) & [R markdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf)
-* [Cheat sheets](https://github.com/rstudio/cheatsheets/)
+* Cheat sheets](
+  - [Rstudio (!)](https://www.rstudio.com/resources/cheatsheets/)
+  - [Rstudio github](https://github.com/rstudio/cheatsheets/)
+  - [Различные подходы](https://github.com/rstudio/cheatsheets/blob/master/syntax.pdf) по работе с данными (классический синтаксис и разные обновления парадигм)
   - [Base `R`](https://github.com/rstudio/cheatsheets/blob/master/base-r.pdf)
   - [Data import](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf)
-  - [Data transformation](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf)
-  - []()
-  - []()
-  - []()
-  - []()
-  - []()
-  - []()
-  - []()
+  - [Data transformation with `dplyr`](https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf)
+  - Эффективная работа с таблицами при помощи [`apply` function family](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family), [`aggregate`](https://github.com/mattm/r-cheat-sheet/blob/master/Aggregate.md), [`subset`](), [`data.table`](https://github.com/rstudio/cheatsheets/blob/master/datatable.pdf)
+  - Работа со [строками](https://github.com/rstudio/cheatsheets/blob/master/strings.pdf) и [регулярными выражениями](https://github.com/rstudio/cheatsheets/blob/master/regex.pdf)(например, \*.txt) в `R`
+  - [Настройка параметров графика (base `R` plotting](https://github.com/rstudio/cheatsheets/blob/master/how-big-is-your-graph.pdf)
+  - [Markdown](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) & [R markdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf)
 
-
-
-
-* http://personality-project.org/r/
-* http://mospolytech.ru/storage/b53b3a3d6ab90ce0268229151c9bde11/files/Mastitsky_and_Shitikov_2014.pdf
-* https://rmarkdown.rstudio.com/lesson-1.html
-* https://www.r-project.org/doc/bib/R-books.html
-* https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
+* Разные стратегии изучения `R`: 
+  - [сразу учим](http://varianceexplained.org/r/teach-tidyverse/) `dplyr` и `ggplot` без классических конструкций
+  - [использование формул](http://sas-and-r.blogspot.com/2017/07/options-for-teaching-r-to-beginners.html) вместо _x_ и _y_ отдельно
+  - [формулы и GGplot](https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula-blog.html)
 
 ## Еще полезное по выбору статистических тестов и т.п.
 
