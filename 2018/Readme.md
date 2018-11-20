@@ -50,6 +50,11 @@
   - [использование формул](http://sas-and-r.blogspot.com/2017/07/options-for-teaching-r-to-beginners.html) вместо _x_ и _y_ отдельно
   - [формулы и `GGplot`](https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula-blog.html)
 
+* `R` для биологов (и смежных областей)
+  - http://rforbiochemists.blogspot.com/p/how-to-use-this-site.html
+  - https://ropensci.org/blog/
+  - https://github.com/brennanpincardiff/RforBiochemists
+
 ## Еще полезное по выбору статистических тестов и т.п.
 
 * http://www.dataanalytics.org.uk/Data%20Analysis/Statistics/choosing-your-stats-test.htm
