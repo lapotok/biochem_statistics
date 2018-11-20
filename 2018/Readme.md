@@ -21,7 +21,6 @@
 * Книги по статистической обработке в `R`
   - [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
   - http://mospolytech.ru/storage/b53b3a3d6ab90ce0268229151c9bde11/files/Mastitsky_and_Shitikov_2014.pdf
-  - https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
   - [`R for Data Science`](https://r4ds.had.co.nz/)
   - https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
   - Pirate `R` [course](https://ndphillips.github.io/IntroductionR_Course/) and [book](https://bookdown.org/ndphillips/YaRrr/)
