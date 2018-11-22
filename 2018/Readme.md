@@ -54,12 +54,15 @@
   - http://rforbiochemists.blogspot.com/p/how-to-use-this-site.html
   - https://ropensci.org/blog/
   - https://github.com/brennanpincardiff/RforBiochemists
+  - https://rcompanion.org/rcompanion/index.html
 
 ## Еще полезное по выбору статистических тестов и т.п.
 
 * http://www.dataanalytics.org.uk/Data%20Analysis/Statistics/choosing-your-stats-test.htm
 * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3116565/
 * http://www.biochemia-medica.com/en/journal/20/1/10.11613/BM.2010.004
+* http://www.wormbook.org/chapters/www_statisticalanalysis/statisticalanalysis.pdf
+* [Data Vizualization] (https://serialmentor.com/dataviz/)
 
 ## Установка R/RStudio vs ONLINE
 
