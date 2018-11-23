@@ -31,6 +31,7 @@
   - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
   - [`GGplot` guide](https://ggplot2.tidyverse.org/reference/)
   - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html)
+  - [I love `R`](https://vk.com/club105124806)
 
 * Cheat sheets
   - [Rstudio (!)](https://www.rstudio.com/resources/cheatsheets/)
