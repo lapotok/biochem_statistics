@@ -24,6 +24,7 @@
   - [`R for Data Science`](https://r4ds.had.co.nz/)
   - https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
   - Pirate `R` [course](https://ndphillips.github.io/IntroductionR_Course/) and [book](https://bookdown.org/ndphillips/YaRrr/)
+  - [Advanced `R`](https://adv-r.hadley.nz/)
 
 * Полезные сайты
   - [STHDA](http://www.sthda.com/english/wiki/r-basics-quick-and-easy) - коллекция всевозможных мануалов по анализу и визуализации в `R`
