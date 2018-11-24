@@ -242,12 +242,18 @@ mean(rnorm(8*12, sd=2000, mean=5000))
 
 ### Собственная функция
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\operatorname{CV}(X)&space;=&space;\frac{SD\&space;(x)}{\overline{x}}\cdot100\%" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\operatorname{CV}(X)&space;=&space;\frac{SD\&space;(x)}{\overline{x}}\cdot100\%" title="\operatorname{CV}(X) = \frac{SD\ (x)}{\overline{x}}\cdot100\%" /></a>
+
 ```r
-# пишем функцию для коэффициента вариации: CV = sd/mean*100%
+# пишем функцию для коэффициента вариации
 CV = function(x) sd(x)/mean(x)*100 # возвращает результат преобразования
 my_vector6 = rnorm(30, 50, 5)
 CV(my_vector6)
+```
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\operatorname{Var}(X)&space;=&space;\frac{\sum_{i=1}^n&space;(x_i&space;-&space;\overline{x})^2}{n-1}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\operatorname{Var}(X)&space;=&space;\frac{\sum_{i=1}^n&space;(x_i&space;-&space;\overline{x})^2}{n-1}&space;$$" title="\operatorname{Var}(X) = \frac{\sum_{i=1}^n (x_i - \overline{x})^2}{n-1} $$" /></a>
+
+```r
 # пишем функцию для вычисления дисперсии, которая нам выдаст несколько значений
 Var = function(x) {
   result = list()
