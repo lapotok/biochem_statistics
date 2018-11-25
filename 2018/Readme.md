@@ -20,11 +20,12 @@
 
 * Книги по статистической обработке в `R`
   - [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
-  - http://mospolytech.ru/storage/b53b3a3d6ab90ce0268229151c9bde11/files/Mastitsky_and_Shitikov_2014.pdf
   - [`R for Data Science`](https://r4ds.had.co.nz/)
+  - [Exploratory data analysis in R](https://bookdown.org/rdpeng/exdata/)
   - https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
   - Pirate `R` [course](https://ndphillips.github.io/IntroductionR_Course/) and [book](https://bookdown.org/ndphillips/YaRrr/)
   - [Advanced `R`](https://adv-r.hadley.nz/)
+  - http://mospolytech.ru/storage/b53b3a3d6ab90ce0268229151c9bde11/files/Mastitsky_and_Shitikov_2014.pdf
 
 * Полезные сайты
   - [STHDA](http://www.sthda.com/english/wiki/r-basics-quick-and-easy) - коллекция всевозможных мануалов по анализу и визуализации в `R`
@@ -38,7 +39,7 @@
     - [GGpubr - надстройка над `GGplot` для крутых готовых графиков](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/)
   - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html) с хорошей [презентацией](http://www.datavis.ca/courses/RGraphics/R-Graphics4.pdf)
   - [I love `R`](https://vk.com/club105124806)
-
+  
 * Cheat sheets
   - [Rstudio (!)](https://www.rstudio.com/resources/cheatsheets/)
   - [Rstudio github](https://github.com/rstudio/cheatsheets/)
