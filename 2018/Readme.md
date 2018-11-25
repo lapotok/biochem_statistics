@@ -19,9 +19,9 @@
 ## Полезные источники по R
 
 * Книги по статистической обработке в `R`
-  - [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
-  - [`R for Data Science`](https://r4ds.had.co.nz/)
+  - [`R` for Data Science](https://r4ds.had.co.nz/)
   - [Exploratory data analysis in R](https://bookdown.org/rdpeng/exdata/)
+  - [Книга по статистике в `R` А.Б. Шипунова](https://cran.cnr.berkeley.edu/doc/contrib/Shipunov-rbook.pdf)
   - https://cran.r-project.org/doc/contrib/Seefeld_StatsRBio.pdf
   - Pirate `R` [course](https://ndphillips.github.io/IntroductionR_Course/) and [book](https://bookdown.org/ndphillips/YaRrr/)
   - [Advanced `R`](https://adv-r.hadley.nz/)
@@ -30,7 +30,6 @@
 * Полезные сайты
   - [STHDA](http://www.sthda.com/english/wiki/r-basics-quick-and-easy) - коллекция всевозможных мануалов по анализу и визуализации в `R`
   - [R in psychological research](http://personality-project.org/r/)
-  - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
   - `GGplot`
     - [Официальный мануал](https://ggplot2.tidyverse.org/reference/)
     - [Дополнительные библиотеки](http://www.ggplot2-exts.org/gallery/)
@@ -39,6 +38,7 @@
     - [GGpubr - надстройка над `GGplot` для крутых готовых графиков](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/)
   - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html) с хорошей [презентацией](http://www.datavis.ca/courses/RGraphics/R-Graphics4.pdf)
   - [I love `R`](https://vk.com/club105124806)
+  - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
   
 * Cheat sheets
   - [Rstudio (!)](https://www.rstudio.com/resources/cheatsheets/)
