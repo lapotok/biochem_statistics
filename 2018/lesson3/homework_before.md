@@ -226,6 +226,14 @@ rnorm(8*12, sd=2000, mean=5000) # явно указанные аргументы
 rnorm(8*12, 5000, 2000) # аргументы указания названий в стандартном порядке (см. справку)
 rnorm(8*12, s=2000, m=5000) # сокращенные названия аргументов - первые буквы должны однозначно указывать
 
+# некоторые функции принимают аргументы в виде формул вида value ~ grouping1 + grouping2 ...
+my_data = data.frame(my_values = c(1, 2, 3, 1, 4, 3),
+                     my_grouping = as.factor(c(1, 1, 1, 2, 2, 2)))
+library(car)
+leveneTest(my_data$my_values, my_data$my_grouping)
+with(my_data, leveneTest(my_values, my_grouping)) # чтобы не писать my_data$ перед каждой переменной
+leveneTest(my_values ~ my_grouping, data = my_data) # пример формулы
+
 # использование нескольких функций: среднее полученного распределения
 my_distr1 = rnorm(8*12, sd=2000, mean=5000) # вывод функции можно сохранять в переменную
 mean(my_distr1)
