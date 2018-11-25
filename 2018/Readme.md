@@ -30,8 +30,13 @@
   - [STHDA](http://www.sthda.com/english/wiki/r-basics-quick-and-easy) - коллекция всевозможных мануалов по анализу и визуализации в `R`
   - [R in psychological research](http://personality-project.org/r/)
   - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
-  - [`GGplot` guide](https://ggplot2.tidyverse.org/reference/)
-  - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html)
+  - `GGplot`
+    - [Официальный мануал](https://ggplot2.tidyverse.org/reference/)
+    - [Дополнительные библиотеки](http://www.ggplot2-exts.org/gallery/)
+    - [Настройка стилей](http://www.sthda.com/english/articles/32-r-graphics-essentials/125-ggplot-cheat-sheet-for-great-customization/)
+    - [Курс по визуализации в `R`](http://www.datavis.ca/courses/RGraphics/)
+    - [GGpubr - надстройка над `GGplot` для крутых готовых графиков](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/)
+  - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html) с хорошей [презентацией](http://www.datavis.ca/courses/RGraphics/R-Graphics4.pdf)
   - [I love `R`](https://vk.com/club105124806)
 
 * Cheat sheets
