@@ -13,3 +13,6 @@ if (length(new.packages) == 0) {
   message(paste(length(new.packages), 'packages need to be installed.'))
   install.packages(new.packages)
 }
+
+# if(!require(devtools)) install.packages("devtools")
+# devtools::install_github("kassambara/ggpubr")
