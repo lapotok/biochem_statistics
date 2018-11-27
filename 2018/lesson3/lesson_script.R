@@ -1,11 +1,15 @@
+# ============================================ #
+# Сравнение независимых групп: пример анализа
+# ============================================ #
+
 # чтение файла формата XLS/XLSX
 library(tidyverse)
-library(readxl)
-pr_st = "... /protein_stability.xlsx" %>%
-  read_excel()
+# library(readxl)
+# pr_st = "... /protein_stability.xlsx" %>%
+#  read_excel()
 
 # dput(pr_st)
-# pr_st = structure(list(Sample = c("-70", "-70", "-70", "-70", "-70", "-70", "+04", "+04", "+04", "+25", "+25", "+25", "+37", "+37", "+37", "+45", "+45", "+45", "-70", "-70", "-70", "-70", "-70", "-70", "+04", "+04", "+04", "+25", "+25", "+25", "+37", "+37", "+37", "+45", "+45", "+45", "-70", "-70", "-70", "-70", "-70", "-70", "+04", "+04", "+04", "+25", "+25", "+25", "+37", "+37", "+37", "+45", "+45", "+45"), ConcUndiluted = c(190.358383395431, 207.130335374233, 212.155084034968, 204.546226648717, 203.881376421319, 223.526873018626, 208.488843335262, 201.844495606319, 211.403404329595, 180.131250871951, 178.923586081235, 169.921036891728, 156.040991878615, 155.666216226061, 181.812066991222, 123.775327946985, 140.124431301898, 146.253177058455, 202.982324261341, 197.08723251418, 197.702589409372, 197.924373388864, 208.91580236029, 200.814383929538, 186.196513795441, 189.108922747877, 210.361337366157, 156.999494218928, 182.093850196572, 184.795647720755, 161.478700330871, 188.628841041798, 179.618386523493, 176.340675491564, 145.224124571716, 148.371343013506, 222.585263927023, 205.180841462771, 207.19048679163, 203.713637951335, 200.347314207726, 196.827449296974, 223.24536020279, 190.413156430691, 196.017824517897, 176.529856242399, 169.136274023754, 182.761804662899, 189.689454914748, 179.738502635609, 175.37642101145, 131.648318426537, 129.820482343488, 144.58244778513)), row.names = c(NA, -54L), class = c("tbl_df", "tbl", "data.frame"))
+pr_st = structure(list(Sample = c("-70", "-70", "-70", "-70", "-70", "-70", "+04", "+04", "+04", "+25", "+25", "+25", "+37", "+37", "+37", "+45", "+45", "+45", "-70", "-70", "-70", "-70", "-70", "-70", "+04", "+04", "+04", "+25", "+25", "+25", "+37", "+37", "+37", "+45", "+45", "+45", "-70", "-70", "-70", "-70", "-70", "-70", "+04", "+04", "+04", "+25", "+25", "+25", "+37", "+37", "+37", "+45", "+45", "+45"), ConcUndiluted = c(190.358383395431, 207.130335374233, 212.155084034968, 204.546226648717, 203.881376421319, 223.526873018626, 208.488843335262, 201.844495606319, 211.403404329595, 180.131250871951, 178.923586081235, 169.921036891728, 156.040991878615, 155.666216226061, 181.812066991222, 123.775327946985, 140.124431301898, 146.253177058455, 202.982324261341, 197.08723251418, 197.702589409372, 197.924373388864, 208.91580236029, 200.814383929538, 186.196513795441, 189.108922747877, 210.361337366157, 156.999494218928, 182.093850196572, 184.795647720755, 161.478700330871, 188.628841041798, 179.618386523493, 176.340675491564, 145.224124571716, 148.371343013506, 222.585263927023, 205.180841462771, 207.19048679163, 203.713637951335, 200.347314207726, 196.827449296974, 223.24536020279, 190.413156430691, 196.017824517897, 176.529856242399, 169.136274023754, 182.761804662899, 189.689454914748, 179.738502635609, 175.37642101145, 131.648318426537, 129.820482343488, 144.58244778513)), row.names = c(NA, -54L), class = c("tbl_df", "tbl", "data.frame"))
 
 # смотрим глазами
 pr_st
@@ -166,3 +170,66 @@ anova_boxplot
 # COMBINE TWO PLOTS
 # Tukey & boxplots
 ggarrange(anova_boxplot, tukey_plot, nrow = 2)
+
+# ============================================ #
+# Сравнение независимых групп: пример анализа
+# ============================================ #
+# генерим пример данных
+mice_w = data.frame(
+  mice_id = 1:10,
+  before = c(332.2, 345.5, 350.9, 352.7, 353.7, 356.9, 360.1, 365.2, 373, 381.4), # Weight of the mice before treatment
+  after = c(345.1, 352.2, 360.3, 377.2, 382.9, 380, 373.9, 386, 402, 385.9)# Weight of the mice after treatment
+)
+mice_w$mice_id = factor(mice_w$mice_id)
+
+# wide format
+mice_w
+
+# wide to long
+mice_l = mice_w %>% 
+  gather("variable", "value", -mice_id) %>% 
+  mutate(variable = factor(variable, levels=c("before", "after"), ordered=T))
+
+# long format
+mice_l
+
+t.test(value~variable, mice_l, paired = TRUE)
+wilcox.test(value~variable, mice_l, paired = TRUE)
+
+mice_l$variable
+t.test(value~variable, mice_l, paired = TRUE, alternative="less")
+
+with(mice_w, t.test(before, after, paired = TRUE, alternative="less"))
+
+library(ggpubr)
+mice_l %>% 
+  ggpaired(x="variable", y="value",
+         color = "variable", line.color = "gray", line.size = 0.4, point.size = 3,
+         palette = "jco", label="value", repel = T, font.label = 9, alpha = .2) +
+  stat_compare_means(paired = TRUE, method = "t.test", ) 
+# stat_compare_means(paired = TRUE, method = "wilcox")
+
+# Friedman test
+# Cyclamate has been widely used as a sweetener in soft drinks for years, but recently, it has been suspected that it can be a possible carcinogen. The dataset "cyclamate.txt" shows a comparison of three laboratory methods for determining the percentage of sodium cyclamate in commercially produced orange drink. All three methods were applied to each of 12 samples.
+
+# cycl<-read.table(file="http://ramanujan.math.trinity.edu/ekwessi/misc/cyclamate.txt", header=T)
+# cycl_m = cycl %>% select(-Sample) %>% as.matrix
+# dput(cycl_m)
+cycl_m = structure(c(0.598, 0.614, 0.6, 0.58, 0.596, 0.592, 0.616, 0.614, 
+0.604, 0.608, 0.602, 0.614, 0.628, 0.628, 0.6, 0.612, 0.6, 0.628, 
+0.628, 0.644, 0.644, 0.612, 0.628, 0.644, 0.632, 0.63, 0.622, 
+0.584, 0.65, 0.606, 0.644, 0.644, 0.624, 0.619, 0.632, 0.616), .Dim = c(12L, 
+3L), .Dimnames = list(NULL, c("PicrylChloride", "Davies", "AOAC"
+)))
+cycl_l = cycl_m %>% as.data.frame() %>% mutate(Num = 1:nrow(.)) %>% gather("var", "val", -Num)
+
+friedman.test(cylc_m) # friedman test
+aov(lm(val ~ var, cycl_l)) # anova
+
+# визуализация данных
+ggplot(cycl_l, aes(x=var, y=val, col=var)) +
+  geom_boxplot() +
+  geom_point() + 
+  map(1:nrow(cycl_m), function(i) geom_line(data=data.frame(x=as.factor(colnames(cycl_m)), y=cycl_m[i,]), aes(x=as.numeric(x), y=y), col="black", alpha=.3)) +
+  theme_bw() +
+  theme(legend.position = "none")
