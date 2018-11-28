@@ -113,64 +113,6 @@ pr_st %>%
   stat_compare_means(method = "t.test", label.y.npc = "bottom") +
   stat_compare_means(method = "wilcox", label.x.npc = "center", label.y.npc = "bottom") 
 
-
-# anova (I-type ANOVA по умолчанию, см. )
-m = pr_st %>% 
-  aov(ConcUndilutedP~Sample, data=.)
-m %>% summary()
-
-# kruskal
-pr_st %>% 
-  kruskal.test(ConcUndilutedP~Sample, data=.) 
-
-# boxplot
-pr_st %>%
-  ggboxplot('Sample', 'ConcUndilutedP',
-          color = 'Sample', palette = "jco", add="jitter") + # add ...; jitter vs sina
-  stat_compare_means(method="anova", label.y.npc = "bottom") +
-  stat_compare_means(method="kruskal.test", label.x.npc = "center", label.y.npc = "bottom")
-
-# множественные сравнения: Tukey
-m_t = TukeyHSD(m)
-m_t
-str(m_t)
-m_t$Sample
-m_t %>% .$Sample
-m_t %>% pluck("Sample")
-
-tukey_plot = m_t %>% pluck("Sample") %>% 
-  as.data.frame() %>% 
-  rownames_to_column("pairs") %>%
-  ggplot(aes(colour=cut(`p adj`, c(-1, 0.001, 0.01, 0.05, 1), 
-                           label=c("***", "**","*","ns")))) +
-  geom_hline(yintercept=0, lty="11", colour="grey30") +
-  geom_errorbar(aes(pairs, ymin=lwr, ymax=upr), width=0.2) +
-  geom_point(aes(pairs, diff)) +
-  labs(colour="") + theme_classic2() + 
-  theme(axis.text.x = element_text(angle = 90))
-tukey_plot
-
-# множественные сравнения: Bonferroni, Holm etc.
-pr_st %$% pairwise.t.test(ConcUndilutedP, Sample, p.adjust.method = "bonferroni")
-pr_st %$% pairwise.wilcox.test(ConcUndilutedP, Sample, p.adjust.method = "bonferroni")
-library(dunn.test)
-pr_st %$% dunn.test(ConcUndilutedP, Sample, method="bonferroni")
-
-# anova + множественные сравнения на одном графике
-anova_boxplot = pr_st %>%
-  ggboxplot('Sample', 'ConcUndilutedP',
-          color = 'Sample', palette = "jco",
-          add = "jitter") + 
-  stat_compare_means(method="anova", label.y.npc = "bottom") +
-  stat_summary(aes(color=Sample), fun.data = mean_cl_normal, geom = "errorbar", width=.1, position = position_nudge(.1)) +
-  stat_compare_means(comparisons = list(c("-70", "+04"), c("+25", "+37"), c("+04", "+25"), c("+37", "+45")), label = "p.signif")
-  #stat_compare_means(label = "p.signif", ref.group = "-70") 
-anova_boxplot
-
-# COMBINE TWO PLOTS
-# Tukey & boxplots
-ggarrange(anova_boxplot, tukey_plot, nrow = 2)
-
 # ============================================ #
 # Сравнение независимых групп: пример анализа
 # ============================================ #
@@ -208,28 +150,3 @@ mice_l %>%
          palette = "jco", label="value", repel = T, font.label = 9, alpha = .2) +
   stat_compare_means(paired = TRUE, method = "t.test", ) 
 # stat_compare_means(paired = TRUE, method = "wilcox")
-
-# Friedman test
-# Cyclamate has been widely used as a sweetener in soft drinks for years, but recently, it has been suspected that it can be a possible carcinogen. The dataset "cyclamate.txt" shows a comparison of three laboratory methods for determining the percentage of sodium cyclamate in commercially produced orange drink. All three methods were applied to each of 12 samples.
-
-# cycl<-read.table(file="http://ramanujan.math.trinity.edu/ekwessi/misc/cyclamate.txt", header=T)
-# cycl_m = cycl %>% select(-Sample) %>% as.matrix
-# dput(cycl_m)
-cycl_m = structure(c(0.598, 0.614, 0.6, 0.58, 0.596, 0.592, 0.616, 0.614, 
-0.604, 0.608, 0.602, 0.614, 0.628, 0.628, 0.6, 0.612, 0.6, 0.628, 
-0.628, 0.644, 0.644, 0.612, 0.628, 0.644, 0.632, 0.63, 0.622, 
-0.584, 0.65, 0.606, 0.644, 0.644, 0.624, 0.619, 0.632, 0.616), .Dim = c(12L, 
-3L), .Dimnames = list(NULL, c("PicrylChloride", "Davies", "AOAC"
-)))
-cycl_l = cycl_m %>% as.data.frame() %>% mutate(Num = 1:nrow(.)) %>% gather("var", "val", -Num)
-
-friedman.test(cylc_m) # friedman test
-aov(lm(val ~ var, cycl_l)) # anova
-
-# визуализация данных
-ggplot(cycl_l, aes(x=var, y=val, col=var)) +
-  geom_boxplot() +
-  geom_point() + 
-  map(1:nrow(cycl_m), function(i) geom_line(data=data.frame(x=as.factor(colnames(cycl_m)), y=cycl_m[i,]), aes(x=as.numeric(x), y=y), col="black", alpha=.3)) +
-  theme_bw() +
-  theme(legend.position = "none")
