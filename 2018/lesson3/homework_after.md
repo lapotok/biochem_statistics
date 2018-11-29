@@ -29,18 +29,22 @@ library(car)
   - gather
   - spread
   - `summarise_at` для расчета выбранных статистик по выбранным колонкам, например, `iris %>% summarise_at(vars(Petal.Length, Sepal.Width), funs(overall.mean = mean, overall.sd = sd))`
-  - `group_by()` + `ungroup()` - для создания групп с целью расчета внутригрупповых статистик или изменений
+  - `group_by()` + `ungroup()` - для создания групп с целью расчета внутригрупповых статистик или изменений (см. далее примеры)
   
     **Пример 1.** Среднее и стандартное отклонение для каждой из групп
     
-    `iris %>% group_by(Species) %>% summarise_at(vars(Petal.Length, Sepal.Width), funs(group.mean = mean, group.sd = sd))`
-    
-    **Пример 2.** Делаем z-трансформацию (т.е. <img src="https://latex.codecogs.com/gif.latex?\fn_cm&space;\frac{x_i-mean(x)}{sd(x)}" title="\frac{x_i-mean(x)}{sd(x)}" />)
-    
-    `iris %>% group_by(Species) %>% mutate(scaled_pl = scale(Petal.Length)) %>% ggqqplot("scaled_pl", facet.by = "Species", ylab = "Scaled within groups petal length")`
-    
-    **Замечание.** Если группировка данных больше не нужна, то лучше ее отменить после использования. Например,
+```r
+iris %>% group_by(Species) %>% summarise_at(vars(Petal.Length, Sepal.Width), funs(group.mean = mean, group.sd = sd))`
 ```
+ **Пример 2.** Делаем z-трансформацию (т.е. <img src="https://latex.codecogs.com/gif.latex?\fn_cm&space;\frac{x_i-mean(x)}{sd(x)}" title="\frac{x_i-mean(x)}{sd(x)}" />)
+    
+```r
+iris %>% group_by(Species) %>% mutate(scaled_pl = scale(Petal.Length)) %>% ggqqplot("scaled_pl", facet.by = "Species", ylab = "Scaled within groups petal length")`
+``` 
+
+ **Замечание.** Если группировка данных больше не нужна, то лучше ее отменить после использования. Например,
+
+```r
 my_new_iris_table = iris %>% 
   group_by(Species) %>% 
   mutate(Petal.Length.GroupwiseScaled = scale(Petal.Length)) %>%
