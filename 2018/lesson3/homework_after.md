@@ -34,12 +34,17 @@ library(car)
     **Пример 1.** Среднее и стандартное отклонение для каждой из групп
     
 ```r
-iris %>% group_by(Species) %>% summarise_at(vars(Petal.Length, Sepal.Width), funs(group.mean = mean, group.sd = sd))`
+iris %>% 
+ group_by(Species) %>% 
+ summarise_at(vars(Petal.Length, Sepal.Width), funs(group.mean = mean, group.sd = sd))`
 ```
- **Пример 2.** Делаем z-трансформацию (т.е. <img src="https://latex.codecogs.com/gif.latex?\fn_cm&space;\frac{x_i-mean(x)}{sd(x)}" title="\frac{x_i-mean(x)}{sd(x)}" />)
+ **Пример 2.** Делаем z-трансформацию, т.е. <img src="https://latex.codecogs.com/gif.latex?\fn_cm&space;\frac{x_i-mean(x)}{sd(x)}" title="\frac{x_i-mean(x)}{sd(x)}" />
     
 ```r
-iris %>% group_by(Species) %>% mutate(scaled_pl = scale(Petal.Length)) %>% ggqqplot("scaled_pl", facet.by = "Species", ylab = "Scaled within groups petal length")`
+iris %>% 
+ group_by(Species) %>% 
+ mutate(scaled_pl = scale(Petal.Length)) %>% 
+ ggqqplot("scaled_pl", facet.by = "Species", ylab = "Scaled within groups petal length")`
 ``` 
 
  **Замечание.** Если группировка данных больше не нужна, то лучше ее отменить после использования. Например,
