@@ -48,6 +48,8 @@ bad %>% View()
 
 ## Анализируем новые данные
 
+Экспримент состоял в следующем. Были взяты клетки _E. coli_ Rosetta2(DE3)pLysS с плазмидой pET22b+/hfsTnI и половина из них на OD600=0.615 индуцирована 0.4 mM IPTG. Далее было измерено OD600 через 30 мин после индукции в клетках с IPTG и без. Надо сравнить рост клеток в этих пробах (по 20 аликвот каждого типа).
+
 ```r
 # рандомизация порядка измерения проб:
 # sample(c(rep('+', 20), rep('-',20))) %>% data.frame()
@@ -58,11 +60,12 @@ tmp = tempfile()
 bact = tmp %>% read_xlsx()
 bact %>% View()
 
-bact %<>% mutate(n_cells = (OD600_2-OD600_1)*8*10^8, n_cell_divisions = log2(OD600_2/OD600_1))
-bact %>% ggqqplot("n_cells", facet.by = "IPTG")
+# расчитываем из разницы OD количество образовавшихся клеток, а также среднее количество делений каждой клетки за это время
+bact %<>% mutate(n_new_cells = (OD600_2-OD600_1)*8*10^8, n_cell_divisions = log2(OD600_2/OD600_1))
+bact %>% ggqqplot("n_new_cells", facet.by = "IPTG")
 bact %>% ggqqplot("n_cell_divisions", facet.by = "IPTG")
 bact %>% 
-  ggboxplot("IPTG", "n_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) +
+  ggboxplot("IPTG", "n_new_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) +
     stat_compare_means(method="t.test", label.x.npc = "left") +
     stat_compare_means(method="wilcox", label.x.npc = "right")
 ```
