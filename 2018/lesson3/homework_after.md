@@ -49,25 +49,22 @@ bad %>% View()
 ## Анализируем новые данные
 
 ```r
-# random measurements:
-# sample(c(rep('+', 20), rep('-',20))) %>% data.frame(x=.)
-
-library(tidyverse)
-library(readxl)
+# рандомизация порядка измерения проб:
+# sample(c(rep('+', 20), rep('-',20))) %>% data.frame()
 
 tmp = tempfile()
 "https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells.xlsx?raw=true" %>% 
- download.file(tmp) 
+  download.file(tmp) 
 bact = tmp %>% read_xlsx()
-# bact = read_excel("/Users/lapotok/Dropbox/study/biochem_statistics/materials_for_students/3/bact_cells.xlsx")
-bact
+bact %>% View()
 
-bact %<>% mutate(dOD = OD600_2-OD600_1, n_cells = dOD*8*10^8, log_n_cells = log2(n_cells), n_div = log2(OD600_2/OD600_1))
+bact %<>% mutate(n_cells = (OD600_2-OD600_1)*8*10^8, n_cell_divisions = log2(OD600_2/OD600_1))
 bact %>% ggqqplot("n_cells", facet.by = "IPTG")
-bact %>% ggqqplot("log_n_cells", facet.by = "IPTG")
-bact %>% ggqqplot("n_div", facet.by = "IPTG")
-bact %>% gghistogram("n_cells", fill="IPTG")
-bact %>% ggboxplot("IPTG", "n_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) + stat_compare_means(method="wilcox")
+bact %>% ggqqplot("n_cell_divisions", facet.by = "IPTG")
+bact %>% 
+  ggboxplot("IPTG", "n_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) +
+    stat_compare_means(method="t.test", label.x.npc = "left") +
+    stat_compare_means(method="wilcox", label.x.npc = "right")
 ```
 
 # Краткий справочник
