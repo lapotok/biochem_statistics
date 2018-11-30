@@ -1,4 +1,4 @@
-# Полезные дополнения
+# Задания
 
 Для работы с пайплайнами и графиками загрузите следующие библиотеки
 
@@ -9,6 +9,47 @@ library(magrittr)
 library(readxl)
 library(car)
 ```
+
+## Читаем файл и исправляем ошибки
+
+```r
+tmp = tempfile()
+"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson1/bad_data_example.xlsx?raw=true" %>% download.file(tmp) 
+bad = tmp %>% read_xlsx()
+bad %<>%
+  mutate(Weight = as.numeric(str_replace(Weight, ",", "."))) %>%
+  mutate(Species_NA = gsub("(.*hz.*)|(.*\\?.*)|(^na$)", NA, Species, ignore.case = T)) %>% 
+  mutate(Пол = toupper(Пол)) %>% 
+  mutate_at(c("Species", "Пол"), as.factor) 
+
+bact %>% View
+```
+
+## Анализируем новые данные
+
+```r
+# random measurements:
+# sample(c(rep('+', 20), rep('-',20))) %>% data.frame(x=.)
+
+library(tidyverse)
+library(readxl)
+
+tmp = tempfile()
+"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells.xlsx?raw=true" %>% 
+ download.file(tmp) 
+bact = tmp %>% read_xlsx()
+# bact = read_excel("/Users/lapotok/Dropbox/study/biochem_statistics/materials_for_students/3/bact_cells.xlsx")
+bact
+
+bact %<>% mutate(dOD = OD600_2-OD600_1, n_cells = dOD*8*10^8, log_n_cells = log2(n_cells), n_div = log2(OD600_2/OD600_1))
+bact %>% ggqqplot("n_cells", facet.by = "IPTG")
+bact %>% ggqqplot("log_n_cells", facet.by = "IPTG")
+bact %>% ggqqplot("n_div", facet.by = "IPTG")
+bact %>% gghistogram("n_cells", fill="IPTG")
+bact %>% ggboxplot("IPTG", "n_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) + stat_compare_means(method="wilcox")
+```
+
+# Краткий справочник
 
 ## Пайплайны
 
@@ -133,3 +174,5 @@ iris %>%
 * Упражнения на фильтрацию и преобразования колонок (общие и по группам)
 * Тестовые данные: выбрать тест, построить боксплот
 * Собрать график по кускам
+* замена значений на NA 
+* обработка ошибок (str_replace)
