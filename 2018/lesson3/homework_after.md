@@ -12,18 +12,39 @@ library(car)
 
 ## Читаем файл и исправляем ошибки
 
-```r
-tmp = tempfile()
-"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson1/bad_data_example.xlsx?raw=true" %>% download.file(tmp) 
-bad = tmp %>% read_xlsx()
-bad %<>%
-  mutate(Weight = as.numeric(str_replace(Weight, ",", "."))) %>%
-  mutate(Species_NA = gsub("(.*hz.*)|(.*\\?.*)|(^na$)", NA, Species, ignore.case = T)) %>% 
-  mutate(Пол = toupper(Пол)) %>% 
-  mutate_at(c("Species", "Пол"), as.factor) 
+Учимся исправлять ошибки, которые мы уже научились находить
 
-bact %>% View
+* неправильный десятичный разделитель
+* неправильно определенный тип колонки Weight (текст, вместо чисел)
+* пропущенные данные, абы как названные (надо составить указания для `R` в формате регулярных выражений, что заменять на NA)
+* русскоязычные названия переменных и названия с пробелами, что может вызывать неудобство в работе, например необходимость их закавычивать при обращении к ним (```bad$`Num ticks` ```)
+* неправильно определенный тип колонки Weight (текст, вместо чисел)
+* в колонке Пол буквы разного регистра обозначают одно и то же
+
+```r
+# так можно скачивать файлы из интернета во временный файл, чтобы потом открывать
+tmp = tempfile() # генерируем название временного файла
+"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson1/bad_data_example.xlsx?raw=true" %>% 
+  download.file(tmp) 
+bad = tmp %>% read_xlsx()
+
+# смотрим, что не так
+bad %>% str()
+bad %>% View()
+
+library(naniar)
+bad %<>% # выражение равносильно bad = bad %>%
+  mutate(Weight = str_replace(Weight, ",", ".")) %>% # исправляем ошибку: заменяем , на .
+  rename(Gender=`Пол`, Num_ticks=`Num ticks`) %>% # переименовываем переменные, чтобы дальше было удобнее
+  mutate(Weight = as.numeric(Weight)) %>% # теперь изменяем тип переменной на числовой
+  replace_with_na_all(~ str_detect(.x, regex("(^na$)|(.*hz.*)|(.*\\?.*)", ignore_case = T))) %>% # заменяем на NA (см. дальше)
+  mutate(Gender = str_to_upper(Gender)) %>% # для унификации заменяем все буквы на большие
+  mutate_at(c("Species", "Gender"), as.factor) # делаем факторами категориальные переменные
+
+bad %>% View()
 ```
+
+Здесь стоит отдельно остановиться на выражении `regex("(^na$)|(.*hz.*)|(.*\\?.*)", ignore_case = T)`. Речь идет об использовании регулярных выражений. Это способ указывать критерий для поиска или замен в строках. Простейший житейский пример регулярного выражения (правда, синтаксис там не очень правильный, зато понятный) - это когда мы выбираем файлы Excel выражением `*.xls(x)`. Здесь я не буду на них подробнее останавливаться, Вы можете подробнее прочитать про это [здесь](https://stringr.tidyverse.org/articles/regular-expressions.html) и [здесь](https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html).
 
 ## Анализируем новые данные
 
