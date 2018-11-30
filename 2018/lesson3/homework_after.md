@@ -96,6 +96,12 @@ bact %>%
 iris %>% 
  group_by(Species) %>% 
  summarise_at(vars(Petal.Length, Sepal.Width), funs(group.mean = mean, group.sd = sd))`
+ 
+# при желании можно определить свою функцию, которая возвращает какое-то значение и использовать ее тоже
+CV = function(x) sd(x)/mean(x)*100
+iris %>% 
+ group_by(Species) %>% 
+ summarise_at(vars(Petal.Length, Sepal.Width), funs(group.mean = mean, group.sd = sd, group.CV = CV))`
 ```
  **Пример 2** на создание групп: внутри каждой группы делаем z-трансформацию переменной, т.е. <img src="https://latex.codecogs.com/gif.latex?\fn_cm&space;\frac{x_i-mean(x)}{sd(x)}" title="\frac{x_i-mean(x)}{sd(x)}" />
     
