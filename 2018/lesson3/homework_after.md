@@ -130,6 +130,20 @@ library(car)
 iris %$%
  leveneTest(Petal.Length, Species)
 ```
+## Формат `function(x,  y, data = d)`
+
+Почти идентично предыдущему случаю. Но некоторые функции требуют, чтобы данные представляли в виде таблицы.
+
+```r
+iris %>% 
+ ggplot(aes(Species, Petal.Length)) +
+ geom_boxplot()
+
+# если надо указать на таблицу в каком-то конкретном аргументе, на нее можно сослаться с помощью .
+iris %>% 
+ ggplot(aes(Species, Petal.Length), data = .) +
+ geom_boxplot()
+```
 
 ## Формат `function(x ~ g)`
 
@@ -139,13 +153,8 @@ iris %$%
 iris %>% 
  filter(Species %in% c('setosa', 'versicolor')) %$% # Т-тестом мы можем сравнивать только 2 группы!
  t.test(Petal.Length ~ Species)
-```
 
-## Формат `function(x ~ g, data = d)`
-
-Почти идентично предыдущему случаю. Но некоторые функции требуют, чтобы данные представляли в виде таблицы.
-
-```r
+# можно использовать формулу x ~ g и ссылаясь на переменные таблицы, но указав на таблицу с помощью .
 iris %>% 
  filter(Species %in% c('setosa', 'versicolor')) %>% # Т-тестом мы можем сравнивать только 2 группы!
  t.test(Petal.Length ~ Species, data=.)
