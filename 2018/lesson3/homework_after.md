@@ -10,6 +10,36 @@ library(readxl)
 library(car)
 ```
 
+Ссылки на различные полезные ресурсы я помещаю [здесь](https://github.com/lapotok/biochem_statistics/tree/master/2018), если вдруг Вам недостаточно материалов, которые я давал на лекции или Гугл к Вам недружелюбен.
+
+Для того чтобы сделать это задание Вам будет полезно вспомнить, что мы делали на уроке, а так же заглянуть в краткий справочник, который я прилагаю ниже на этой странице.
+
+## Анализируем новые данные
+
+Экспримент состоял в следующем. Были взяты клетки _E. coli_ Rosetta2(DE3)pLysS с плазмидой pET22b+/hfsTnI и половина из них на OD600=0.615 индуцирована 0.4 mM IPTG. Далее было измерено OD600 через 30 мин после индукции в клетках с IPTG и без. Надо сравнить рост клеток в этих пробах (по 20 аликвот каждого типа).
+
+```r
+# рандомизация порядка измерения проб:
+# sample(c(rep('+', 20), rep('-',20))) %>% data.frame()
+
+tmp = tempfile()
+"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells.xlsx?raw=true" %>% 
+  download.file(tmp) 
+bact = tmp %>% read_xlsx()
+bact %>% View()
+
+# расчитываем из разницы OD количество образовавшихся клеток, а также среднее количество делений каждой клетки за это время
+bact %<>% mutate(n_new_cells = (OD600_2-OD600_1)*8*10^8, n_cell_divisions = log2(OD600_2/OD600_1))
+bact %>% ggqqplot("n_new_cells", facet.by = "IPTG")
+bact %>% ggqqplot("n_cell_divisions", facet.by = "IPTG")
+bact %>% 
+  ggboxplot("IPTG", "n_new_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) +
+    stat_compare_means(method="t.test", label.x.npc = "left") +
+    stat_compare_means(method="wilcox", label.x.npc = "right")
+```
+
+# Краткий справочник
+
 ## Читаем файл и исправляем ошибки
 
 Учимся исправлять ошибки, которые мы уже научились находить. Какие-то из них можно исправить уже на этапе подготовки данных (см. [рекомендации](http://www.sthda.com/english/wiki/best-practices-in-preparing-data-files-for-importing-into-r)).
@@ -45,32 +75,6 @@ bad %>% View()
 ```
 
 Здесь стоит отдельно остановиться на выражении `regex("(^na$)|(.*hz.*)|(.*\\?.*)", ignore_case = T)`. Речь идет об использовании регулярных выражений. Это способ указывать критерий для поиска или замен в строках. Простейший житейский пример регулярного выражения (правда, синтаксис там не очень правильный, зато понятный) - это когда мы выбираем файлы Excel выражением `*.xls(x)`. Здесь я не буду на них подробнее останавливаться, Вы можете подробнее прочитать про это по ссылкам далее [[1](https://stringr.tidyverse.org/articles/regular-expressions.html), [2](https://github.com/rstudio/cheatsheets/blob/master/regex.pdf), [3](https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html)].
-
-## Анализируем новые данные
-
-Экспримент состоял в следующем. Были взяты клетки _E. coli_ Rosetta2(DE3)pLysS с плазмидой pET22b+/hfsTnI и половина из них на OD600=0.615 индуцирована 0.4 mM IPTG. Далее было измерено OD600 через 30 мин после индукции в клетках с IPTG и без. Надо сравнить рост клеток в этих пробах (по 20 аликвот каждого типа).
-
-```r
-# рандомизация порядка измерения проб:
-# sample(c(rep('+', 20), rep('-',20))) %>% data.frame()
-
-tmp = tempfile()
-"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells.xlsx?raw=true" %>% 
-  download.file(tmp) 
-bact = tmp %>% read_xlsx()
-bact %>% View()
-
-# расчитываем из разницы OD количество образовавшихся клеток, а также среднее количество делений каждой клетки за это время
-bact %<>% mutate(n_new_cells = (OD600_2-OD600_1)*8*10^8, n_cell_divisions = log2(OD600_2/OD600_1))
-bact %>% ggqqplot("n_new_cells", facet.by = "IPTG")
-bact %>% ggqqplot("n_cell_divisions", facet.by = "IPTG")
-bact %>% 
-  ggboxplot("IPTG", "n_new_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) +
-    stat_compare_means(method="t.test", label.x.npc = "left") +
-    stat_compare_means(method="wilcox", label.x.npc = "right")
-```
-
-# Краткий справочник
 
 ## Пайплайны
 
