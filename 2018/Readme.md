@@ -14,6 +14,10 @@
 * [Конспект урока](https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson2/materials.md)
 * Домашняя работы: [условие](https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson2/homework.md) и [форма для отправки](https://docs.google.com/forms/d/e/1FAIpQLSdwRY2cQ_YOHvo0iYTamEb3L-2BgQdqAwAWWUyDZC8FlGf7oA/viewform)
 
+### Урок 3
+* [Скрипт урока](https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/lesson_script.R)
+* [Домашнаяя работа](https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/homework_after.md)
+
 # Ссылки
 
 ## Полезные источники по R
