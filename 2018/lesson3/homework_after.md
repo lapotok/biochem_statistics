@@ -1,4 +1,4 @@
-# Задания
+# Задание
 
 Для работы с пайплайнами и графиками загрузите следующие библиотеки
 
@@ -16,27 +16,79 @@ library(car)
 
 ## Анализируем новые данные
 
-Экспримент состоял в следующем. Были взяты клетки _E. coli_ Rosetta2(DE3)pLysS с плазмидой pET22b+/hfsTnI и половина из них на OD600=0.615 индуцирована 0.4 mM IPTG. Далее было измерено OD600 через 30 мин после индукции в клетках с IPTG и без. Надо сравнить рост клеток в этих пробах (по 20 аликвот каждого типа).
+Файл с данными, с которыми Вам предстоит работать, находится [здесь](https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells_bad.xlsx?raw=true). Вы можете скачать его на компьютер и далее с ним работать, либо его можно с помощью `R` скачать в какую-то директорию или во временный файл, а затем открыть командой `read_excel()`.
 
 ```r
-# рандомизация порядка измерения проб:
-# sample(c(rep('+', 20), rep('-',20))) %>% data.frame()
-
 tmp = tempfile()
-"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells.xlsx?raw=true" %>% 
+"https://github.com/lapotok/biochem_statistics/blob/master/2018/lesson3/bact_cells_bad.xlsx?raw=true" %>% 
   download.file(tmp) 
-bact = tmp %>% read_xlsx()
+bact = tmp %>% read_excel()
+```
+Экспримент состоял в следующем. Были взяты клетки _E. coli_ Rosetta2(DE3)pLysS с плазмидой pET22b+/hfsTnI и половина из них на OD600=0.615 индуцирована 0.4 mM IPTG. Далее было измерено OD600 через 25 мин после индукции в клетках с IPTG и без. Надо сравнить рост клеток в этих пробах (по 20 аликвот каждого типа). Оптические плотности измерялись не подряд, а в случайном порядке, чтобы исключить влияние "глюков" приборов и подроста клеток в время измерения на результат. Последовательность случайных измерений создавалась командой
+
+```r
+sample(c(rep('+', 20), rep('-',20))) %>% data.frame()
+```
+
+Вам необходимо открыть файл, проверить на предмет ошибок, исправить их (см. пример во второй части этой страницы). Затем надо проанализировать различия в росте между неиндуцированными и индуцированными клетками.
+
+```r
+# смотрим на файл
+bact %>% str()
 bact %>% View()
 
-# расчитываем из разницы OD количество образовавшихся клеток, а также среднее количество делений каждой клетки за это время
-bact %<>% mutate(n_new_cells = (OD600_2-OD600_1)*8*10^8, n_cell_divisions = log2(OD600_2/OD600_1))
-bact %>% ggqqplot("n_new_cells", facet.by = "IPTG")
-bact %>% ggqqplot("n_cell_divisions", facet.by = "IPTG")
+# правим, что не так:
+bact %<>% 
+ rename(IPTG = ..., OD600_1 = ...) %>% 
+ mutate(OD600_2 = str_replace(...)) %>% 
+ mutate... # сделать столбец OD600_2 числовым типом
+
+# смотрим на данные, нет ли опечаток
+bact %>% ggboxplot(...)
+
+# исправляем их в Excel и повторно открываем документ, или здесь
+bact[31, "OD600_2"] = ...
+
+# расчитываем из разницы OD количество образовавшихся клеток (OD600 = 1 соответствует 8*10^8 клеток)
+bact %<>% mutate(n_new_cells = ...)
+bact %>% ggqqplot("n_new_cells", facet.by = ...)
 bact %>% 
-  ggboxplot("IPTG", "n_new_cells", col="IPTG", add="jitter", add.params = list(size=3, alpha=.5), outlier.shape=NA) +
-    stat_compare_means(method="t.test", label.x.npc = "left") +
-    stat_compare_means(method="wilcox", label.x.npc = "right")
+  ggboxplot(...) + # надо окрасить данные согласно видам, добавить точки данных, подписать график и оси, посмотрите, что еще можно отобразить
+    stat_compare_means(...) # подписать значение t-test или wilcoxon test p.value
+
+# проверить нормальность данных
+
+# проверить гомогенность дисперсий
+
+# сравнить средние
+
+# учимся создавать графики по частям с использованием библиотеки ggplot
+
+library(ggforce)
+bact %>% ggplot(aes(...)) + # задаем x, y и переменную, задающую окрашивание (индукцировано или нет)
+  geom_boxplot(...) + # хотелось бы убрать outliers в виде точек, т.к. далее мы хотим рисовать точки
+  geom_sina(...) + # хотелось бы укрупнить точки и сделать их полупрозрачными
+  stat_summary(geom="errorbar", ...) + # рисуем среднее +/- sd (разброс)
+  stat_summary(geom="point", ...) + # рисуем среднее (точка)
+  # и то же самое для среднее с доверительными интервалами
+  theme_classic()
+
+# кстати, графики можно сохранять в PowerPoint/Word и потом там редактировать, как объекты MS Office!
+my_plot = bact %>% ggplot(...) ...
+
+library(rvg)
+library(officer)
+doc <- read_pptx() %>% # создаем презентацию
+  add_slide(layout = "Title and Content", master = "Office Theme") %>% # добавляем слайд 1
+  ph_with_vg(code = print(my_plot), type = "body") %>% # вставляем график
+  add_slide(layout = "Title and Content", master = "Office Theme") %>% # добавляем слайд 2 (если надо, можно сколько угодно)
+  ph_with_vg(code = print(my_plot), type = "body", height = 4.06, width = 5.39) %>% # можно изменить размер графика
+  print(target = "demo.pptx") # задаем имя файла
 ```
+
+Про сохранение графиков, созданных в `R` для использования в MS Office подробнее написано в данных ссылках [[1](https://davidgohel.github.io/officer/articles/powerpoint.html), [2](https://blog.revolutionanalytics.com/2017/10/office-charts.html)].
+
+Написанный Вами код нужно отправить в [форму](https://docs.google.com/forms/d/e/1FAIpQLSeUJNnlx7Bh6DYJhRDLnyuh7_6sDYv-FRvO6pQ4p7ZsQfaTxg/viewform?usp=sf_link).
 
 # Краткий справочник
 
@@ -205,17 +257,3 @@ iris %>%
   as.data.frame() %>% # преобразуем полученный список в таблицу данных
   ggscatter("setosa", "versicolor") # передаем через пайплайн таблицу на функцию ggscatter первым аргументом (можно было бы и не первым аргументом, используя ".")
 ```
-
-
-# Идеи
-
-* Упражнения на функции пайплайнов
-* Упражнения на операторы пайплайнов
-* Упражнения на фильтрацию и преобразования колонок (общие и по группам)
-* Тестовые данные: выбрать тест, построить боксплот
-* Собрать график по кускам
-* замена значений на NA 
-* обработка ошибок (str_replace)
-* Export plots (officer)
-  - https://davidgohel.github.io/officer/articles/powerpoint.html
-  - https://blog.revolutionanalytics.com/2017/10/office-charts.html
