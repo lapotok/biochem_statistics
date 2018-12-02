@@ -90,6 +90,10 @@ doc <- read_pptx() %>% # создаем презентацию
 
 Написанный Вами код нужно отправить в [форму](https://docs.google.com/forms/d/e/1FAIpQLSeUJNnlx7Bh6DYJhRDLnyuh7_6sDYv-FRvO6pQ4p7ZsQfaTxg/viewform?usp=sf_link).
 
+На этом - все! Далее - справочник.
+
+---
+
 # Краткий справочник
 
 ## Читаем файл и исправляем ошибки
