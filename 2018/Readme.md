@@ -67,6 +67,7 @@
   - https://ropensci.org/blog/
   - https://github.com/brennanpincardiff/RforBiochemists
   - https://rcompanion.org/rcompanion/index.html
+  - https://datacarpentry.org/R-ecology-lesson
 
 ## Еще полезное по выбору статистических тестов и т.п.
 
