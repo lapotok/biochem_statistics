@@ -22,7 +22,13 @@
   - list -> data.frame -> tibble
 * Tidy data, reshaping
 * Pipelines
-* gglot/qplot + ggpubr -> pptx
+* plotting
+  - gglot/qplot
+  - ggplot visual builder (esquisse) - упомянуть
+  - ggpubr
+  - title, labs, extressions
+  - вставка переменных в текст (glue)
+  - компоновка графиков (patchwork)
 
 ## Анализ данных
 
@@ -57,11 +63,14 @@
 <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/selfeducate.png" height="60">
 
 * импорт файлов HTML/XML (httr, rvest)
-* вставка переменных в текст (glue)
-* компоновка графиков (patchwork)
 * map-конструкции
 * nesting (nest, group_by, map)
 * операции с датами (lubridate)
 * markdown, remedy, Rpres
-* ggplot visual builder (esquisse)
 * profiling (profvis)
+
+# Тестовые датасеты
+
+* тестирование стабильности
+* рост бактерий в разных условиях
+* фитирование кривых
