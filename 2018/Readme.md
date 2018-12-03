@@ -40,6 +40,7 @@
     - [Настройка стилей](http://www.sthda.com/english/articles/32-r-graphics-essentials/125-ggplot-cheat-sheet-for-great-customization/)
     - [Курс по визуализации в `R`](http://www.datavis.ca/courses/RGraphics/)
     - [GGpubr - надстройка над `GGplot` для крутых готовых графиков](http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/)
+  - [Pipelines](https://www.datacamp.com/community/tutorials/pipe-r-tutorial)
   - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html) с хорошей [презентацией](http://www.datavis.ca/courses/RGraphics/R-Graphics4.pdf)
   - [I love `R`](https://vk.com/club105124806)
   - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
