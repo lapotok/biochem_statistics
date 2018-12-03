@@ -1,6 +1,6 @@
 Это мои планы на преподавание курса в следующем году.
 
-# На всем готовеньком <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/outofbox.png" height="70">
+# <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/outofbox.png" height="70"> На всем готовеньком 
 
 ## Введение
 
@@ -38,7 +38,7 @@
 
 ---
 
-# Сделай сам <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/doityourself.jpeg" height="60">
+# <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/doityourself.jpeg" height="60"> Сделай сам 
 
 
 ## Функции
@@ -48,7 +48,9 @@
 * Автоматизация и упрощения (gg_to_pptx)
 * Изменение формата вывода/ввода (wrapplers, e.g. mean_sdl, t.test()$p.value, все тесты в одном формате, типа computestats)
 
-# Полезные фишки для самостоятельного изучения <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/selfeducate.png" height="60">
+# Полезные фишки для самостоятельного изучения 
+
+<img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/selfeducate.png" height="60">
 
 * импорт файлов HTML/XML (httr, rvest)
 * вставка переменных в текст (glue)
