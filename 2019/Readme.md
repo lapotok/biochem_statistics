@@ -48,4 +48,14 @@
 * Автоматизация и упрощения (gg_to_pptx)
 * Изменение формата вывода/ввода (wrapplers, e.g. mean_sdl, t.test()$p.value, все тесты в одном формате, типа computestats)
 
-## map-конструкции
+# Полезные фишки для самостоятельного изучения
+
+* импорт файлов HTML/XML (httr, rvest)
+* вставка переменных в текст (glue)
+* компоновка графиков (patchwork)
+* map-конструкции
+* nesting (nest, group_by, map)
+* операции с датами (lubridate)
+* markdown, remedy, Rpres
+* ggplot visual builder (esquisse)
+* profiling (profvis)
