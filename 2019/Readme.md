@@ -16,13 +16,15 @@
   - print или return (value/list)
 * Типы данных
   - value (char, integer, numeric/double, boolean)
-  - vector (factor, matrix)
+  - vector
+    - factor (текст - не данные)
+    - matrix
   - list -> data.frame -> tibble
 * Tidy data, reshaping
 * Pipelines
 * gglot/qplot + ggpubr -> pptx
 * Анализ данных
-  - str
+  - str, table/summarise, cut...
   - ggboxplot
   - ggqqplot
   - gghistogram
