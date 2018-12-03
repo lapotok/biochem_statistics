@@ -24,7 +24,7 @@
 * Pipelines
 * gglot/qplot + ggpubr -> pptx
 
-## Введение Анализ данных
+## Анализ данных
 
 * str, table/summarise, cut...
 * ggboxplot
