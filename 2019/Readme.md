@@ -48,6 +48,8 @@
 * Автоматизация и упрощения (gg_to_pptx)
 * Изменение формата вывода/ввода (wrapplers, e.g. mean_sdl, t.test()$p.value, все тесты в одном формате, типа computestats)
 
+---
+
 # Полезные фишки для самостоятельного изучения 
 
 <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/selfeducate.png" height="60">
