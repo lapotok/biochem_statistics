@@ -23,18 +23,20 @@
 * Tidy data, reshaping
 * Pipelines
 * gglot/qplot + ggpubr -> pptx
-* Анализ данных
-  - str, table/summarise, cut...
-  - ggboxplot
-  - ggqqplot
-  - gghistogram
-  - проверка на нормальность, гомогенность дисперсии
-  - шкалирование и трансформации
-  - t.test, wilcox.test, ks.test
-  - aov, kruskal.test, tukeyHSD, pairwise.t.test, pairwise.wilcox.test
-  - chisq, fischer
-  - lm, drm
-  - bootstrap
+
+## Введение Анализ данных
+
+* str, table/summarise, cut...
+* ggboxplot
+* ggqqplot
+* gghistogram
+* проверка на нормальность, гомогенность дисперсии
+* шкалирование и трансформации
+* t.test, wilcox.test, ks.test
+* aov, kruskal.test, tukeyHSD, pairwise.t.test, pairwise.wilcox.test
+* chisq, fischer
+* lm, drm
+* bootstrap
 
 ---
 
