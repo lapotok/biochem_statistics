@@ -3,7 +3,9 @@
 # ============================================== #
 
 # 1. Русские имена в пути установки, решение - поставить в папку C:/R
-# 2. Жалуется на отсутствие gfortran, решение
+# 2. Locale
+# echo "export LANG=en_US.UTF-8" >> ~/.bashrc && export LC_ALL=en_US.UTF-8 >> ~/.bashrc && source ~/.bashrc
+# 3. Жалуется на отсутствие gfortran, решение
 #     MacOS
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # brew install gcc
