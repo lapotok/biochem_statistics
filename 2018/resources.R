@@ -24,10 +24,10 @@ uninstalled_upd = setdiff(c(base.packages, names(git.packages)), installed_upd)
 # пишем отчет
 cat(crayon::bold$underline('\nPackage installation report\n'))
 if (length(uninstalled) == 0) {
-  cat(paste0(crayon::green(clisymbols::symbol$tick), " No packages need to be installed.\n")) 
+  cat(paste0(' ', crayon::green(clisymbols::symbol$tick), " No packages need to be installed.\n")) 
 } else {
   cat(paste0('Following packages (', length(uninstalled), ') needed to be installed:\n'))
-  for (p in uninstalled) cat(paste0(crayon::yellow(clisymbols::symbol$star), ' ' , crayon::style(p, 'gray'), '\n'))
+  for (p in uninstalled) cat(' ', paste0(crayon::yellow(clisymbols::symbol$star), ' ' , crayon::style(p, 'gray'), '\n'))
 }
 if(length(setdiff(uninstalled, uninstalled_upd))>0){
   cat(paste0('Following packages (', length(setdiff(uninstalled, uninstalled_upd)), ') were succesfully installed:\n'))
@@ -35,7 +35,7 @@ if(length(setdiff(uninstalled, uninstalled_upd))>0){
 }
 if(length(uninstalled_upd)>0) {
   cat(paste0(crayon::red('Following packages (', length(uninstalled_upd), ') are still missing:\n')))
-  for (p in uninstalled_upd) cat(paste(crayon::red(clisymbols::symbol$cross), crayon::style(p, 'gray'), '\n'))
+  for (p in uninstalled_upd) cat(' ', paste(crayon::red(clisymbols::symbol$cross), crayon::style(p, 'gray'), '\n'))
 }
 
 # update.packages()
