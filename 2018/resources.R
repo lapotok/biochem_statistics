@@ -9,7 +9,7 @@ if (length(new.packages) == 0) {
 } else {
   message(paste('Following packages (', length(new.packages), ') need to be installed:', sep=""))
   for (p in new.packages) message(paste('*', p))
-  #install.packages(new.packages, dependencies = TRUE)
+  install.packages(new.packages, dependencies = TRUE)
 }
 
 installed = as.character(installed.packages()[,"Package"])
