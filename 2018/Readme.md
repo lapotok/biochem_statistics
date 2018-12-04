@@ -46,7 +46,7 @@
     - Pipeline videos [[1](https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/), [2](https://www.dataschool.io/dplyr-tutorial-part-2/)]
   - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html) с хорошей [презентацией](http://www.datavis.ca/courses/RGraphics/R-Graphics4.pdf)
   - [I love `R`](https://vk.com/club105124806)
-  - [Подборка полезных ресурсов по `R`](https://github.com/qinwf/awesome-R)
+  - Подборки полезных ресурсов по `R`[[1](https://github.com/qinwf/awesome-R), [2](https://github.com/rstudio/RStartHere)]
   - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
   
 * Cheat sheets
