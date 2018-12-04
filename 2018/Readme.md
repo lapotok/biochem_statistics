@@ -43,6 +43,7 @@
   - Pipelines
     - [Pipelines tutorial](https://www.datacamp.com/community/tutorials/pipe-r-tutorial)
     - [Pipelines slides](https://github.com/tjmahr/MadR_Pipelines)
+    - Pipeline videos [[1](https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/), [2](https://www.dataschool.io/dplyr-tutorial-part-2/)]
   - [R markdown guide](https://rmarkdown.rstudio.com/lesson-1.html) с хорошей [презентацией](http://www.datavis.ca/courses/RGraphics/R-Graphics4.pdf)
   - [I love `R`](https://vk.com/club105124806)
   - [Data import from WEB](https://github.com/gastonstat/tutorial-R-web-data)
