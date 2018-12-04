@@ -2,23 +2,17 @@
 #  Скачиваем нужные пакеты, если еще не скачаны
 # ============================================== #
 
-# update.packages()
-
 # список пакетов базового репозитория
-base.packages = c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice', 'reshape2', 'repr', 'car', 'sinaplot', 'cowplot', 'dplyr', 'curl', 'ggforce', 'gridExtra', 'knitr', 'multcomp', 'drc', 'RColorBrewer', 'rmarkdown', 'boot', 'nlme', 'caret', 'ipred', 'e1071', 'readxl', 'naniar', 'effsize', 'dunn.test', 'magrittr', 'officer', 'rvg', 'profvis', 'lubridate', 'remedy', 'glue', 'esquisse', 'devtools')
+base.packages = c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice', 'reshape2', 'repr', 'car', 'sinaplot', 'cowplot', 'dplyr', 'curl', 'ggforce', 'gridExtra', 'knitr', 'multcomp', 'drc', 'RColorBrewer', 'rmarkdown', 'boot', 'nlme', 'caret', 'ipred', 'e1071', 'readxl', 'naniar', 'effsize', 'dunn.test', 'magrittr', 'officer', 'rvg', 'profvis', 'lubridate', 'remedy', 'glue', 'esquisse', 'ggalt', 'devtools')
 # список пакетов из github
-git.packages = list(`patchwork`='thomasp85/patchwork')
+git.packages = list(`patchwork`='thomasp85/patchwork', `crayon`='r-lib/crayon')
 
 # составляем списки того, что надо поставить
 installed = as.character(installed.packages()[,"Package"])
 uninstalled = setdiff(c(base.packages, names(git.packages)), installed)
 
 # ставим
-if (length(uninstalled) == 0) {
-  message('No packages need to be installed.')
-} else {
-  message(paste('Following packages (', length(uninstalled), ') need to be installed:', sep=""))
-  for (p in uninstalled) message(paste('*', p))
+if (length(uninstalled)>0) {
   install.packages(intersect(uninstalled, base.packages), dependencies = TRUE)
   for (p in intersect(uninstalled, names(git.packages))) devtools::install_github(git.packages[[p]])
 }
@@ -28,9 +22,20 @@ installed_upd = as.character(installed.packages()[,"Package"])
 uninstalled_upd = setdiff(c(base.packages, names(git.packages)), installed_upd)
 
 # пишем отчет
-if(length(uninstalled_upd)>0) {
-  message(paste('\n\nFollowing packages (', length(uninstalled_upd), ') are still missing:', sep=""))
-  for (p in uninstalled_upd) message(paste('*',p))
+cat(crayon::bold$underline('\nPackage installation report\n'))
+if (length(uninstalled) == 0) {
+  cat(paste0(crayon::green(clisymbols::symbol$tick), " No packages need to be installed.\n")) 
 } else {
-  message("\n\nGREAT! All packages were successfully installed!")
+  cat(paste0(crayon::bold('Following packages (', length(uninstalled), ') needed to be installed:\n')))
+  for (p in uninstalled) cat(paste0(crayon::yellow(clisymbols::symbol$star), ' ' , p, '\n'))
 }
+if(length(setdiff(uninstalled, uninstalled_upd))>0){
+  cat(paste0(crayon::bold('Following packages (', length(setdiff(uninstalled, uninstalled_upd)), ') were succesfully installed:\n', sep="")))
+  for (p in setdiff(uninstalled, uninstalled_upd)) cat(paste(crayon::green(clisymbols::symbol$tick),p, '\n'))
+}
+if(length(uninstalled_upd)>0) {
+  cat(paste0(crayon::bold$red('Following packages (', length(uninstalled_upd), ') are still missing:\n', sep="")))
+  for (p in uninstalled_upd) cat(paste(crayon::red(clisymbols::symbol$cross),p, '\n'))
+}
+
+# update.packages()
