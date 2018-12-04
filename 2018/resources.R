@@ -3,7 +3,7 @@
 # ============================================== #
 
 # список пакетов базового репозитория
-base.packages = c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice', 'reshape2', 'repr', 'car', 'sinaplot', 'cowplot', 'dplyr', 'curl', 'ggforce', 'gridExtra', 'knitr', 'multcomp', 'drc', 'RColorBrewer', 'rmarkdown', 'boot', 'nlme', 'caret', 'ipred', 'e1071', 'readxl', 'naniar', 'effsize', 'dunn.test', 'magrittr', 'officer', 'rvg', 'profvis', 'lubridate', 'remedy', 'glue', 'esquisse', 'ggalt', 'devtools')
+base.packages = c('ggplot2', 'scales', 'testttttt', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice', 'reshape2', 'repr', 'car', 'sinaplot', 'cowplot', 'dplyr', 'curl', 'ggforce', 'gridExtra', 'knitr', 'multcomp', 'drc', 'RColorBrewer', 'rmarkdown', 'boot', 'nlme', 'caret', 'ipred', 'e1071', 'readxl', 'naniar', 'effsize', 'dunn.test', 'magrittr', 'officer', 'rvg', 'profvis', 'lubridate', 'remedy', 'glue', 'esquisse', 'ggalt', 'devtools')
 # список пакетов из github
 git.packages = list(`patchwork`='thomasp85/patchwork', `crayon`='r-lib/crayon')
 
@@ -26,16 +26,16 @@ cat(crayon::bold$underline('\nPackage installation report\n'))
 if (length(uninstalled) == 0) {
   cat(paste0(crayon::green(clisymbols::symbol$tick), " No packages need to be installed.\n")) 
 } else {
-  cat(paste0(crayon::bold('Following packages (', length(uninstalled), ') needed to be installed:\n')))
-  for (p in uninstalled) cat(paste0(crayon::yellow(clisymbols::symbol$star), ' ' , p, '\n'))
+  cat(paste0('Following packages (', length(uninstalled), ') needed to be installed:\n'))
+  for (p in uninstalled) cat(paste0(crayon::yellow(clisymbols::symbol$star), ' ' , crayon::style(p, 'gray'), '\n'))
 }
 if(length(setdiff(uninstalled, uninstalled_upd))>0){
-  cat(paste0(crayon::bold('Following packages (', length(setdiff(uninstalled, uninstalled_upd)), ') were succesfully installed:\n', sep="")))
-  for (p in setdiff(uninstalled, uninstalled_upd)) cat(paste(crayon::green(clisymbols::symbol$tick),p, '\n'))
+  cat(paste0('Following packages (', length(setdiff(uninstalled, uninstalled_upd)), ') were succesfully installed:\n'))
+  for (p in setdiff(uninstalled, uninstalled_upd)) cat(paste(crayon::green(clisymbols::symbol$tick), crayon::style(p, 'gray'), '\n'))
 }
 if(length(uninstalled_upd)>0) {
-  cat(paste0(crayon::bold$red('Following packages (', length(uninstalled_upd), ') are still missing:\n', sep="")))
-  for (p in uninstalled_upd) cat(paste(crayon::red(clisymbols::symbol$cross),p, '\n'))
+  cat(paste0(crayon::red('Following packages (', length(uninstalled_upd), ') are still missing:\n')))
+  for (p in uninstalled_upd) cat(paste(crayon::red(clisymbols::symbol$cross), crayon::style(p, 'gray'), '\n'))
 }
 
 # update.packages()
