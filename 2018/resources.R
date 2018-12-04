@@ -31,7 +31,7 @@ if (length(uninstalled) == 0) {
 }
 if(length(setdiff(uninstalled, uninstalled_upd))>0){
   cat(paste0('Following packages (', length(setdiff(uninstalled, uninstalled_upd)), ') were succesfully installed:\n'))
-  for (p in setdiff(uninstalled, uninstalled_upd)) cat(paste(crayon::green(clisymbols::symbol$tick), crayon::style(p, 'gray'), '\n'))
+  for (p in setdiff(uninstalled, uninstalled_upd)) cat(paste(' ', crayon::green(clisymbols::symbol$tick), crayon::style(p, 'gray'), '\n'))
 }
 if(length(uninstalled_upd)>0) {
   cat(paste0(crayon::red('Following packages (', length(uninstalled_upd), ') are still missing:\n')))
