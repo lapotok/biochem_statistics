@@ -7,6 +7,7 @@
 #     MacOS
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # brew install gcc
+# или тут https://cran.r-project.org/bin/macosx/tools/
 
 
 # ============================================== #
