@@ -32,5 +32,5 @@ if(length(uninstalled_upd)>0) {
   message(paste('Following packages (', length(uninstalled_upd), ') are still missing:', sep=""))
   for (p in uninstalled_upd) message(paste('*',p))
 } else {
-  message("All packages were successfully installed!")
+  message("\n\nGREAT! All packages were successfully installed!")
 }
