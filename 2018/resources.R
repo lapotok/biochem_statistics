@@ -29,7 +29,7 @@ uninstalled_upd = setdiff(c(base.packages, names(git.packages)), installed_upd)
 
 # пишем отчет
 if(length(uninstalled_upd)>0) {
-  message(paste('Following packages (', length(uninstalled_upd), ') are still missing:', sep=""))
+  message(paste('\n\nFollowing packages (', length(uninstalled_upd), ') are still missing:', sep=""))
   for (p in uninstalled_upd) message(paste('*',p))
 } else {
   message("\n\nGREAT! All packages were successfully installed!")
