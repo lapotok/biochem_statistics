@@ -57,7 +57,7 @@ doc <- read_pptx() %>% # создаем презентацию
   add_slide(layout = "Title and Content", master = "Office Theme") %>% # добавляем слайд 1
   ph_with_vg(code = print(ggg), type = "body") %>% # вставляем график
   print(target = "demo.pptx") # задаем имя файла
-  
+
 # отличная возможность оптимизации - написать функцию ggplot_to_pptx
 ggplot_to_pptx = function(g, filename){
   require(rvg)
@@ -83,26 +83,40 @@ library(magrittr)
 calibr_mean = pr_st %>% filter(Sample == "-70") %>% pull(ConcUndiluted) %>% mean()
 pr_st %<>% mutate(ConcUndilutedP=ConcUndiluted/calibr_mean*100)
 
+# вспоминаем про нормальность и дисперсию
 library(ggpubr)
+pr_st %>% group_by(Sample) %>% mutate(ConcUndilutedScaled = scale(ConcUndiluted)) %>% ggqqplot("ConcUndilutedScaled", facet.by = "Sample")
+library(car)
+pr_st %$% leveneTest(ConcUndiluted ~ Sample, data=.)
+
+# смотрим на боксплоты
 library(patchwork)
-means = pr_st %>% group_by(Sample) %>% summarise(CPmeans = mean(ConcUndilutedP))
 g1 = pr_st %>% ggboxplot("Sample", "ConcUndilutedP", col="Sample", add="jitter", legend="right")
 g2 = pr_st %>% ggplot() + 
   aes(as.numeric(Sample), ConcUndilutedP, col=Sample) +
   geom_boxplot() + 
   geom_jitter(width = .7) + 
-  theme_classic() #+ 
-#geom_smooth(data=means, aes(as.numeric(Sample), CPmeans, color="black"), method="lm", formula = y ~ poly(x, 2)) +
-#coord_cartesian(ylim=c(60,110))
+  theme_classic()
+
+# means = pr_st %>% group_by(Sample) %>% summarise(CPmeans = mean(ConcUndilutedP))
+# g2 + geom_smooth(data=means, aes(as.numeric(Sample), CPmeans, color="black"), method="lm", formula = y ~ poly(x, 2)) + coord_cartesian(ylim=c(60,110))
+
 g1 / g2
 
 # lm & ANOVA
 pr_st_lm = pr_st %>% lm(ConcUndilutedP ~ Sample, data = .)
+pr_st_lm
 pr_st_lm %>% summary
 pr_st_lm %>% confint
-pr_st_aov = pr_st_lm %>% aov
-pr_st %>% aov(ConcUndilutedP ~ Sample, data = .)
+pr_st_aov = pr_st_lm %>% aov # pr_st %>% aov(ConcUndilutedP ~ Sample, data = .)
 pr_st_aov %>% summary
+m %>% aov %>% model.tables("means")
+f = fitted(pr_st_aov)
+r = residuals(pr_st_aov)
+r %>% shapiro.test()
+data.frame(residuals=r) %>% ggqqplot("residuals")
+data.frame(residuals=r,fitted=f) %>% ggscatter('fitted', 'residuals', add="reg.line", add.params = list(color="red", size=.5, linetype="dashed"))
+
 pr_st_aov %>% TukeyHSD
 pr_st_aov %>% 
   TukeyHSD %>% 
@@ -129,8 +143,8 @@ friedman.test(RoundingTimes)
 rtl %>% friedman.test(val ~ var |n, data=.)
 
 # Repeated measures Anova
-rtl = RoundingTimes %>% as.tibble %>% mutate(n=row_number()) %>% gather("var", "val", -n) 
-rtl %>% aov(val ~ var + Error(n/var), data=.) %>% summary
+# rtl = RoundingTimes %>% as.tibble %>% mutate(n=row_number()) %>% gather("var", "val", -n) 
+# rtl %>% aov(val ~ var + Error(n/var), data=.) %>% summary
 
 library(magrittr)
 library(tidyverse)
@@ -146,6 +160,5 @@ ggplot(rtl, aes(x=var, y=val, col=var)) +
   theme(legend.position = "none")
 
 # chisq, fischer
-
 # transformations и разные распределения
 # glue, expressions
