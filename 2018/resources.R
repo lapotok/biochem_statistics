@@ -8,7 +8,7 @@
 # 3. Жалуется на отсутствие gfortran, решение
 #     MacOS
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# brew install gcc
+# brew install gcc # (gcc49, если старый mac)
 # или тут https://cran.r-project.org/bin/macosx/tools/
 
 
