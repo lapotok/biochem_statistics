@@ -64,7 +64,7 @@
 
 <img src="https://raw.githubusercontent.com/lapotok/biochem_statistics/master/2019/img/selfeducate.png" height="60">
 
-* импорт файлов HTML/XML (httr, rvest)
+* импорт файлов HTML/XML (httr, rvest), google sheets (gsheets)
 * map-конструкции
 * nesting (nest, group_by, map)
 * операции с датами (lubridate)
