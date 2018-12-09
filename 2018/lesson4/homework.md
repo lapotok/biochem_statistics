@@ -51,24 +51,25 @@ pairwise.test
 
 # украшаем боксплот ...
 my_data %>% ggboxplot(
-  'g',
-  'x',
-  col           = 'g',
-  fill          = NA,
-  add           = c('jitter', 'mean_ci'),
-  error.plot    = 'errorbar',
-  add.params    = list(size = 2, alpha = .5), 
-  outlier.shape = NA,
-  title         = 'Визуализация распределения значений по группам',
-  xlab          = 'Группы',
-  ylab          = 'Значения',
-  caption       = 'Попарные сравнения с помощью t.test+bonferroni',
-  ggtheme       = theme_classic()
+    'g',
+    'x',
+    col           = 'g',
+    fill          = NA,
+    add           = c('jitter', 'mean_ci'),
+    error.plot    = 'errorbar',
+    add.params    = list(size = 2, alpha = .5), 
+    outlier.shape = NA,
+    title         = 'Визуализация распределения значений по группам',
+    xlab          = 'Группы',
+    ylab          = 'Значения',
+    caption       = 'Попарные сравнения с помощью t.test+bonferroni',
+    ggtheme       = theme_classic()
 ) + 
+  grids(axis = 'y', linetype = 'dashed') +
   stat_compare_means(method = 'anova', label.y = 20) +
   stat_pvalue_manual(
-    pairwise.test, label = "p.adj.signif", 
-    y.position = c(85, 90, 95)
+      pairwise.test, label = "p.adj.signif", 
+      y.position = c(85, 95, 90), tip.length = .01
   )
 
 # украшение может быть бесконечно http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/79-plot-meansmedians-and-error-bars/
