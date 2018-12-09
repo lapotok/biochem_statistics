@@ -76,6 +76,7 @@
 
 ## Еще полезное по выбору статистических тестов и т.п.
 
+* [Mind map](https://coggle.it/diagram/Vxlydu1akQFeqo6-/t/inference)
 * http://www.dataanalytics.org.uk/Data%20Analysis/Statistics/choosing-your-stats-test.htm
 * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3116565/
 * http://www.biochemia-medica.com/en/journal/20/1/10.11613/BM.2010.004
