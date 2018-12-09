@@ -19,7 +19,7 @@
 # список пакетов базового репозитория
 base.packages = c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice', 'reshape2', 'repr', 'car', 'sinaplot', 'cowplot', 'dplyr', 'curl', 'ggforce', 'gridExtra', 'knitr', 'multcomp', 'drc', 'RColorBrewer', 'rmarkdown', 'boot', 'nlme', 'caret', 'ipred', 'e1071', 'readxl', 'naniar', 'effsize', 'dunn.test', 'magrittr', 'officer', 'rvg', 'profvis', 'lubridate', 'remedy', 'glue', 'esquisse', 'ggalt', 'devtools', 'ggExtra', 'tidyverse', 'broom', 'gsheet', 'jtools', 'huxtable')
 # список пакетов из github
-git.packages = list(`patchwork`='thomasp85/patchwork', `crayon`='r-lib/crayon')
+git.packages = list(`patchwork`='thomasp85/patchwork', `crayon`='r-lib/crayon', `rstatix`='kassambara/rstatix')
 
 # составляем списки того, что надо поставить
 installed = as.character(installed.packages()[,"Package"])
