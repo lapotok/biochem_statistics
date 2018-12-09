@@ -16,6 +16,8 @@
 #  Скачиваем нужные пакеты, если еще не скачаны
 # ============================================== #
 
+# Shortcut: source('https://tiny.cc/lpt_rpkgs')
+
 # список пакетов базового репозитория
 base.packages = c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice', 'reshape2', 'repr', 'car', 'sinaplot', 'cowplot', 'dplyr', 'curl', 'ggforce', 'gridExtra', 'knitr', 'multcomp', 'drc', 'RColorBrewer', 'rmarkdown', 'boot', 'nlme', 'caret', 'ipred', 'e1071', 'readxl', 'naniar', 'effsize', 'dunn.test', 'magrittr', 'officer', 'rvg', 'profvis', 'lubridate', 'remedy', 'glue', 'esquisse', 'ggalt', 'devtools', 'ggExtra', 'tidyverse', 'broom', 'gsheet', 'jtools', 'huxtable')
 # список пакетов из github
