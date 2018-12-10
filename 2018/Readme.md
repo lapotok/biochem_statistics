@@ -81,6 +81,7 @@
 * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3116565/
 * http://www.biochemia-medica.com/en/journal/20/1/10.11613/BM.2010.004
 * http://www.wormbook.org/chapters/www_statisticalanalysis/statisticalanalysis.pdf
+* http://davidmlane.com/hyperstat/index.html
 * [Data Vizualization](https://serialmentor.com/dataviz/)
 
 ## Установка R/RStudio vs ONLINE
