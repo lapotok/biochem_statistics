@@ -8,41 +8,41 @@ c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice
 * пайплайны
 
 ```r
-library(tidyverse) # основа пайплайнов (%>%, select, mutate, summarise, group_by ...)
-library(magrittr) # дополнительные фишки (типа %<>%)
-library(broom) # упрощение вывода моделей и тестов (model %>% tidy())
-library(purrr) # mapping, nesting, операции над несколькими подмножествами данных
-library(naniar) # NA фильтрация
-library(glue) # склеивание вместе текста и переменных
-library(rstatix) # pipeline-friendly tests
+library(tidyverse)  # основа пайплайнов (%>%, select, mutate, summarise, group_by ...)
+library(magrittr)   # дополнительные фишки (типа %<>%)
+library(broom)      # упрощение вывода моделей и тестов (model %>% tidy())
+library(purrr)      # mapping, nesting, операции над несколькими подмножествами данных
+library(naniar)     # NA фильтрация
+library(glue)       # склеивание вместе текста и переменных
+library(rstatix)    # pipeline-friendly tests
 ```
 
 * графики
 
 ```r
-library(ggplot2) # основа современных графиков
-library(ggpubr) # крутые готовые графики (ggboxplot etc.)
+library(ggplot2)    # основа современных графиков
+library(ggpubr)     # крутые готовые графики (ggboxplot etc.)
 library(ggstatplot) # еще готовые графики ...
 
-library(ggforce) # geom_sina
-library(ggalt) # geom_* ...
+library(ggforce)    # geom_sina
+library(ggalt)      # geom_* ...
 
-library(patchwork) # простая компоновка графиков, например (g1 + g2) / g3
-library(cowplot) # другой способ
-library(gridExtra) # другой способ
-library(ggExtra) # другой способ
+library(patchwork)  # простая компоновка графиков, например (g1 + g2) / g3
+library(cowplot)    # другой способ
+library(gridExtra)  # другой способ
+library(ggExtra)    # другой способ
 
-library(rvg) # векторная графика
-library(officer) # экспорт в pptx
+library(rvg)        # векторная графика
+library(officer)    # экспорт в pptx
 ```
 
 * import
 
 ```r
-library(readxl) # xls, xlsx
-library(httr) # web
-library(rvest) # web
-library(gsheet) # google sheets
+library(readxl)     # xls, xlsx
+library(httr)       # web
+library(rvest)      # web
+library(gsheet)     # google sheets
 ```
 
 * analysis
