@@ -8,7 +8,7 @@ c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice
 * пайплайны
 
 ```r
-library(tidyverse) # основа пайплайнов
+library(tidyverse) # основа пайплайнов (%>%, select, mutate, summarise, group_by ...)
 library(magrittr) # дополнительные фишки (типа %<>%)
 library(broom) # упрощение вывода моделей и тестов (model %>% tidy())
 library(rstatix) # pipeline-friendly tests
