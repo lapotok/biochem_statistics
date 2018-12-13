@@ -11,10 +11,10 @@ c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice
 library(tidyverse) # основа пайплайнов (%>%, select, mutate, summarise, group_by ...)
 library(magrittr) # дополнительные фишки (типа %<>%)
 library(broom) # упрощение вывода моделей и тестов (model %>% tidy())
-library(rstatix) # pipeline-friendly tests
 library(purrr) # mapping, nesting, операции над несколькими подмножествами данных
 library(naniar) # NA фильтрация
 library(glue) # склеивание вместе текста и переменных
+library(rstatix) # pipeline-friendly tests
 ```
 
 * графики
