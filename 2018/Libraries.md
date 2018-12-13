@@ -8,32 +8,44 @@ c('ggplot2', 'scales', 'plotly', 'openxlsx', 'httr', 'rvest', 'ggpubr', 'lattice
 * пайплайны
 
 ```r
-library(tidyverse)
-library(magrittr)
-library(broom)
+library(tidyverse) # основа пайплайнов
+library(magrittr) # дополнительные фишки (типа %<>%)
+library(broom) # упрощение вывода моделей и тестов (model %>% tidy())
 library(rstatix) # pipeline-friendly tests
-library(purrr) # mapping, nesting, multiple operations on the data objects
-library(naniar) # NA filtering
-library(glue) # text + var output
+library(purrr) # mapping, nesting, операции над несколькими подмножествами данных
+library(naniar) # NA фильтрация
+library(glue) # склеивание вместе текста и переменных
 ```
 
 * графики
 
 ```r
-library(ggplot2) # workhorse of cool plotting
-library(ggpubr) # cool pre-made graphs
-library(ggstatplot) # some more ...
+library(ggplot2) # основа современных графиков
+library(ggpubr) # крутые готовые графики (ggboxplot etc.)
+library(ggstatplot) # еще готовые графики ...
 
-library(patchwork) # stacking graphs together
-library(cowplot) # another way
-library(gridExtra) # another way
-library(ggExtra) # another way
+library(ggforce) # geom_sina
+library(ggalt) # geom_* ...
 
-library(rvg) # export to pptx
-library(officer)
+library(patchwork) # простая компоновка графиков, например (g1 + g2) / g3
+library(cowplot) # другой способ
+library(gridExtra) # другой способ
+library(ggExtra) # другой способ
+
+library(rvg) # векторная графика
+library(officer) # экспорт в pptx
 ```
 
-* 
+* import
+
+```r
+library(readxl) # xls, xlsx
+library(httr) # web
+library(rvest) # web
+library(gsheet) # google sheets
+```
+
+* analysis
 
 ```r
 ```
