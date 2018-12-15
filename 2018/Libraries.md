@@ -21,7 +21,7 @@ library(rstatix)    # pipeline-friendly tests
 
 ```r
 library(ggplot2)    # основа современных графиков
-library(ggpubr)     # крутые готовые графики (ggboxplot etc.)
+library(ggpubr)     # крутые готовые графики (ggboxplot etc.) на основе ggplot2
 library(ggstatplot) # еще готовые графики ...
 
 library(ggforce)    # geom_sina
