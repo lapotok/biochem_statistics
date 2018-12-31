@@ -43,7 +43,7 @@
 * t.test, wilcox.test, ks.test
 * aov, kruskal.test, tukeyHSD, pairwise.t.test, pairwise.wilcox.test
 * chisq, fischer
-* lm, drm
+* lm, drm, glm, glmulti, step, stepAIC, glance, anova comparison
 * bootstrap
 
 ---
