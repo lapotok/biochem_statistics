@@ -70,6 +70,8 @@
 * операции с датами (lubridate)
 * markdown, remedy, Rpres
 * profiling (profvis)
+* expression, TeX
+* regexps
 
 # Тестовые датасеты
 
