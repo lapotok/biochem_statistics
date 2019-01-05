@@ -69,6 +69,7 @@
 * nesting (nest, group_by, map)
 * операции с датами (lubridate)
 * markdown, remedy, Rpres
+* ggiraph, shiny интерактивные графики  
 * profiling (profvis)
 * expression, TeX
 * regexps
